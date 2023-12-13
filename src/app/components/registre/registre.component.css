@@ -1,0 +1,64 @@
+.formulari {
+  margin: 3vh auto;
+  border: 1px solid;
+  width: 50%;
+  box-shadow: inset 0 0 2vh 1vh #000;
+  background-color: #3eb6e8;
+  font-family: Arial;
+}
+.formulari h1 {
+  margin: 4vh auto;
+  width: fit-content;
+}
+#h1-registrarse {
+  margin: 3vh auto;
+  padding-left: 5%;
+  width: fit-content;
+}
+.contingut {
+  text-align: center;
+}
+.iniciar-sesio {
+  margin-right: 2vh;
+  margin-left: -3vh;
+}
+table {
+  margin: auto;
+  text-align: right;
+}
+td {
+  font-size: 2.5vh;
+}
+input {
+  border-radius: 5px;
+  width: 20vh;
+}
+.text input, .passwd input {
+  margin-left: 3vh;
+}
+.inciar-registre {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3vh;
+  margin-left: -2vh;
+  margin-right: 2vh;
+}
+.inici, .registre {
+  font-size: 3vh;
+  list-style: none;
+  text-decoration: none;
+  color: black;
+}
+.inici:link, .registre:link {
+  color: black;
+}
+.button {
+  color: #424242;
+  font-weight: bold;
+  font-size: 3vh;
+  padding: 1vh;
+  margin: 2vh auto;
+}
+a:visited {
+  text-decoration: none;
+}
