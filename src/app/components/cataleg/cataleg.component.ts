@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import {FooterComponent} from "../footer/footer.component";
 
 
 
 @Component({
   selector: 'app-cataleg',
   standalone: true,
-  imports: [],
+  imports: [FooterComponent],
   templateUrl: './cataleg.component.html',
   styleUrl: './cataleg.component.css'
 })
