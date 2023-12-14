@@ -1,0 +1,44 @@
+section h2 {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 2em;
+  color: black;
+}
+section ul {
+  font-weight: bold;
+  font-style: italic;
+  list-style: lower-roman;
+  color: #525252;
+  font-size: 1em;
+}
+section ol {
+  font-weight: bold;
+  font-style: italic;
+  list-style: lower-greek;
+  color: #525252;
+}
+
+.section_title {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 1.2em;
+  color: black;
+}
+
+.text {
+  background-color: #3eb6e8;
+  margin: 2vh 20% 2vh 20%;
+  padding: 0 10% 3% 10%;
+  font-family: Arial;
+  border: 1px solid black;
+}
+.text img {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+.text p {
+  font-size: 1em;
+  margin-bottom: 1vh;
+}
+
+/*# sourceMappingURL=politica-terminos.css.map */
