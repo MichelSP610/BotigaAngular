@@ -5,6 +5,7 @@ import {RegistreComponent} from "./components/registre/registre.component";
 import {CistellaComponent} from "./components/cistella/cistella.component";
 import {ContacteComponent} from "./components/contacte/contacte.component";
 import {CondicionsComponent} from "./components/condicions/condicions.component";
+import {PrivacitatComponent} from "./components/privacitat/privacitat.component";
 
 export const routes: Routes = [
   { path: '', component:IniciComponent},
@@ -12,5 +13,6 @@ export const routes: Routes = [
   { path: 'registre', component:RegistreComponent},
   {path: 'cistella', component:CistellaComponent},
   {path: 'contacte', component:ContacteComponent},
-  {path: 'condicions', component:CondicionsComponent}
+  {path: 'condicions', component:CondicionsComponent},
+  {path: 'privacitat', component:PrivacitatComponent}
 ];
