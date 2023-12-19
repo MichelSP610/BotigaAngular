@@ -6,6 +6,7 @@ import {CistellaComponent} from "./components/cistella/cistella.component";
 import {ContacteComponent} from "./components/contacte/contacte.component";
 import {CondicionsComponent} from "./components/condicions/condicions.component";
 import {PrivacitatComponent} from "./components/privacitat/privacitat.component";
+import {IniciSessioComponent} from "./components/inici-sessio/inici-sessio.component";
 
 export const routes: Routes = [
   { path: '', component:IniciComponent},
@@ -14,5 +15,6 @@ export const routes: Routes = [
   {path: 'cistella', component:CistellaComponent},
   {path: 'contacte', component:ContacteComponent},
   {path: 'condicions', component:CondicionsComponent},
-  {path: 'privacitat', component:PrivacitatComponent}
+  {path: 'privacitat', component:PrivacitatComponent},
+  {path: 'login', component:IniciSessioComponent}
 ];

@@ -1,0 +1,31 @@
+<!-- Formulari -->
+<div class="formulari">
+  <ul class="contenidor-tabs">
+    <!-- Contingut dels Formularis -->
+    <div class="contingut">
+      <!-- Iniciar Sesió -->
+      <div class="iniciar-sesio">
+        <h1>Iniciar Sesió</h1>
+        <form>
+          <table>
+            <tr class="text">
+              <td>Usuario <span class="req"></span></td>
+              <td><input type="text" required></td>
+            </tr>
+            <tr class="passwd">
+              <td>Contrasenya <span class="req"></span></td>
+              <td><input type="password" required></td>
+            </tr>
+          </table>
+          <p class="forgot"><a href="https://help.steampowered.com/es/">Se't ha oblidat la contrasenya?</a></p>
+          <input type="submit" class="button" value="Iniciar Sesió">
+        </form>
+      </div>
+      <div class="inciar-registre">
+        <!-- Links dels formularis -->
+        <a class="inici" routerLink="/login" routerLinkActive="active">Iniciar Sesió</a>
+        <a class="registre" routerLink="/registre" routerLinkActive="active">Registrarse</a>
+      </div>
+    </div>
+  </ul>
+</div>
