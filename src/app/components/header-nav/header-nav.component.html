@@ -1,6 +1,8 @@
 <header>
   <a href="https://orteil.dashnet.org/cookieclicker/"><img src="assets/LOGO.png"></a>
   <h1>Bobby Cookies</h1>
+    <p *ngIf="readUserConnection() === 'false'" class="session"><a routerLink="/login" routerLinkActive="active">Iniciar Sesió</a></p>
+    <p *ngIf="readUserConnection() === 'true'" class="session">{{username}}</p>
 </header>
 <nav>
   <ul>
