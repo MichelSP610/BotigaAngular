@@ -11,6 +11,9 @@ export class SessioService {
     let user = {
       username: "admin",
       password: "patata",
+      name: "admin",
+      lastName: "",
+      email: "nomail@nomail.com",
     };
     this.users.push(user);
   }
@@ -29,6 +32,15 @@ export class SessioService {
     }
   }
 
-  addUser() {
+  addUser(user:any, password:any, name:any, lastName:any, email:any) {
+    let userPush = {
+      username: user,
+      password: password,
+      name: name,
+      lastName: lastName,
+      email: email,
+    }
+    this.users.push(userPush)
+    console.log("user pushed")
   }
 }
