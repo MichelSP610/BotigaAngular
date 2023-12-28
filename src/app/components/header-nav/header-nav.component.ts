@@ -23,12 +23,16 @@ export class HeaderNavComponent {
   readUserConnection():string {
     let userSession = sessionStorage.getItem('userConnected')
     console.log(userSession)
-    if (!userSession) {
+    if (!userSession || userSession === 'false') {
       return 'false'
     } else {
       this.username = this.sessioService.getUserName(sessionStorage.getItem('userPos'))
       return 'true';
     }
 
+  }
+  logOut() {
+    sessionStorage.setItem('userConnected', 'false')
+    console.log("user disconnected")
   }
 }

@@ -10,7 +10,7 @@ export class SessioService {
   constructor(private router: Router) {
     this.users = [];
     if (localStorage.getItem('users') !== null) {
-      this.users = JSON.parse(localStorage['users'])
+      this.users = JSON.parse(localStorage['users']);
     }
     else {
       this.users = [];
@@ -36,6 +36,7 @@ export class SessioService {
         }
       }
     }
+    return userConnected;
   }
 
   addUser(user:any, password:any, name:any, lastName:any, email:any) {
@@ -46,8 +47,8 @@ export class SessioService {
       lastName: lastName,
       email: email,
     }
-    this.users.push(userPush)
-    localStorage.setItem('users', JSON.stringify(this.users))
+    this.users.push(userPush);
+    localStorage.setItem('users', JSON.stringify(this.users));
   }
 
   userExists(user: any) {
