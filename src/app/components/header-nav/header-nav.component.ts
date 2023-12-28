@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
+import {SessioService} from "../../serveis/sessio.service";
 
 @Component({
   selector: 'app-header-nav',
@@ -12,7 +13,7 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 export class HeaderNavComponent {
 
   username: any;
-  constructor() {
+  constructor(private sessioService: SessioService) {
 
   }
 
@@ -25,7 +26,7 @@ export class HeaderNavComponent {
     if (!userSession) {
       return 'false'
     } else {
-      this.username = sessionStorage.getItem('username')
+      this.username = this.sessioService.getUserName(sessionStorage.getItem('userPos'))
       return 'true';
     }
 

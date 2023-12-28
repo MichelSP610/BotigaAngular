@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -6,16 +7,22 @@ import { Injectable } from '@angular/core';
 export class SessioService {
 
   public users: any[];
-  constructor() {
+  constructor(private router: Router) {
     this.users = [];
-    let user = {
-      username: "admin",
-      password: "patata",
-      name: "admin",
-      lastName: "",
-      email: "nomail@nomail.com",
-    };
-    this.users.push(user);
+    if (localStorage.getItem('users') !== null) {
+      this.users = JSON.parse(localStorage['users'])
+    }
+    else {
+      this.users = [];
+      let user = {
+        username: "admin",
+        password: "patata",
+        name: "admin",
+        lastName: "",
+        email: "nomail@nomail.com",
+      };
+      this.users.push(user);
+    }
   }
 
   logIn(user: any, password:any) {
@@ -24,9 +31,8 @@ export class SessioService {
       if (user === this.users[i].username) {
         if (password === this.users[i].password) {
           sessionStorage.setItem('userConnected', 'true');
-          sessionStorage.setItem('username', user);
+          sessionStorage.setItem('userPos', i+'');
           userConnected = true;
-
         }
       }
     }
@@ -41,6 +47,21 @@ export class SessioService {
       email: email,
     }
     this.users.push(userPush)
-    console.log("user pushed")
+    localStorage.setItem('users', JSON.stringify(this.users))
+  }
+
+  userExists(user: any) {
+    let userExists = false;
+    for (let i = 0; i < this.users.length && !userExists; i++) {
+      if (user === this.users[i].username) {
+        userExists = true;
+      }
+    }
+    return userExists;
+  }
+
+  getUserName(userPos: any) {
+    userPos = Number(userPos)
+    return this.users[userPos].name;
   }
 }
