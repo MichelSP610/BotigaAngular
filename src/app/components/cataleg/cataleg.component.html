@@ -1,35 +1,20 @@
-<div id="content">
+<div>
   <aside>
     <form>
       <label class="cookie_category">Tipus de galeta</label><br>
-      <input type="checkbox" name="dolces" class="cookie_type"><label>Dolces</label><br>
-      <input type="checkbox" name="salades" class="cookie_type"><label>Salades</label><br>
+      <input type="checkbox" name="dolces" class="cookie_type" [(ngModel)]="filtreSeleccionat.dolca"><label>Dolces</label><br>
+      <input type="checkbox" name="salades" class="cookie_type" [(ngModel)]="filtreSeleccionat.salada"><label>Salades</label><br>
       <label class="cookie_category">Tipus de pasta</label><br>
-      <input type="checkbox" name="dura" class="cookie_type"><label>Dura</label><br>
-      <input type="checkbox" name="tova" class="cookie_type"><label>Tova</label><br>
-      <input type="checkbox" name="liquida" class="cookie_type"><label>Lìquida</label><br>
+      <input type="checkbox" name="dura" class="cookie_type" [(ngModel)]="filtreSeleccionat.dura"><label>Dura</label><br>
+      <input type="checkbox" name="tova" class="cookie_type" [(ngModel)]="filtreSeleccionat.tova"><label>Tova</label><br>
+      <input type="checkbox" name="liquida" class="cookie_type" [(ngModel)]="filtreSeleccionat.liquida"><label>Líquida</label><br>
     </form>
   </aside>
   <article>
-    <div>
-      <img class="article_image" src="assets/condensed-milk-cookies.jpg">
-      <h2>Galetes de llet condensada</h2>
-      <p>1kg de galetes de llet condensada de la marca Fornais</p>
-      <h3>9,99€</h3>
-      <div class="tmp_false_button">Comprar</div>
-    </div>
-    <div>
-      <img class="article_image" src="assets/chocolate-chip-cookies.jpg">
-      <h2>Galetes de chocolata</h2>
-      <p>1kg de galetes de chocolata de la marca Fornais</p>
-      <h3>12,99€</h3>
-      <div class="tmp_false_button">Comprar</div>
-    </div>
-    <div>
-      <img class="article_image" src="assets/integral-cookies.jpg">
-      <h2>Galetes de llet condensada</h2>
-      <p>1kg de galetes itegrals de la marca Fornais</p>
-      <h3>14,99€</h3>
+    <div *ngFor="let galeta of catalegGaletes | filtreGaletes:filtreSeleccionat" [ngClass]="{'galleta-dolca': galeta.gust === 'dolca', 'galleta-salada': galeta.gust === 'salada', 'galleta-integral': galeta.pasta === 'dura'}">
+      <img class="article_image" [src]="getGaletaImage(galeta)">
+      <h2>{{ galeta.nom }}</h2>
+      <p>{{ galeta.pasta }} - {{ galeta.preu }}</p>
       <div class="tmp_false_button">Comprar</div>
     </div>
   </article>
