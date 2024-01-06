@@ -11,26 +11,12 @@
     </form>
   </aside>
   <article>
-    <div>
-      <img class="article_image" src="assets/condensed-milk-cookies.jpg">
-      <h2>Galetes de llet condensada</h2>
-      <p>1kg de galetes de llet condensada de la marca Fornais</p>
-      <h3>9,99€</h3>
-      <div class="tmp_false_button">Comprar</div>
-    </div>
-    <div>
-      <img class="article_image" src="assets/chocolate-chip-cookies.jpg">
-      <h2>Galetes de chocolata</h2>
-      <p>1kg de galetes de chocolata de la marca Fornais</p>
-      <h3>12,99€</h3>
-      <div class="tmp_false_button">Comprar</div>
-    </div>
-    <div>
-      <img class="article_image" src="assets/integral-cookies.jpg">
-      <h2>Galetes de llet condensada</h2>
-      <p>1kg de galetes itegrals de la marca Fornais</p>
-      <h3>14,99€</h3>
-      <div class="tmp_false_button">Comprar</div>
+    <div class="product" *ngFor="let product of products; trackBy: trackByProductId">
+      <img class="article_image" src="{{product.image}}">
+      <h2>{{product.name}}</h2>
+      <p>{{product.description}}</p>
+      <h3>{{ product.price | currency:'EUR' }}</h3>
+      <div class="tmp_false_button" (click)="addToCart(product)">Comprar</div>
     </div>
   </article>
 </div>
