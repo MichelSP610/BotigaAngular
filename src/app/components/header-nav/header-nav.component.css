@@ -4,6 +4,8 @@ header {
   color: white;
   background-color: #3745a5;
   box-shadow: inset 0 0 10vh 1vh #000;
+  display: flex;
+  justify-content: space-between;
 }
 header img {
   width: 18vh;
@@ -18,6 +20,55 @@ header h1 {
   font-family: "Imprint MT Shadow";
   text-shadow: 0px 0px 5px #0c338f, 0px 0px 10px #93c6d3, 0px 0px 10px #052570,
   0px 0px 20px #38383a;
+}
+header .session {
+  font-size: 3vmin;
+  margin-right: 2vmin;
+}
+header .session, header .session li{
+  list-style: none;
+  text-align: center;
+}
+header .session li{
+  width: 12vmin;
+  height: 5vmin;
+  background-color: #3eb6e8;
+  border-radius: 0.5vmin;
+}
+header .session li a{
+  width: 100%;
+  height: 100%;
+}
+header .session ul{
+  display: none;
+  top: 100%;
+}
+header .session li:hover > ul {
+  display: block;
+  position: absolute;
+  top: 7.4vmin;
+  right: 2vmin;
+}
+#log-out {
+  background-color: #3eb6e8;
+}
+#log-out a {
+  color: white;
+}
+#log-out:hover {
+  background-color: red;
+}
+#log-in {
+  width: 22vmin;
+  padding: 0;
+}
+#log-in a {
+  width: 100%;
+  height: 100%;
+}
+header .session a {
+  text-decoration: none;
+  color: white;
 }
 nav {
   display: flex;
@@ -38,7 +89,7 @@ nav li {
   display: inline-block;
   justify-content: center;
   text-align: center;
-  width: 17%;
+  width: 20%;
   text-shadow: 0px 0px 5px #0c338f, 0px 0px 10px #93c6d3, 0px 0px 10px #052570,
   0px 0px 20px #38383a;
 }
