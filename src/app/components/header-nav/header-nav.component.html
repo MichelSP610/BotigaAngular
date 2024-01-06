@@ -1,12 +1,11 @@
 <header>
   <a href="https://orteil.dashnet.org/cookieclicker/"><img src="assets/LOGO.png"></a>
   <h1>Bobby Cookies</h1>
-    <ul *ngIf="readUserConnection() === 'false'" class="session"><li><a routerLink="/login" routerLinkActive="active">Iniciar Sessio</a></li></ul>
+    <ul *ngIf="readUserConnection() === 'false'" class="session"><li id="log-in"><a routerLink="/login" routerLinkActive="active">Iniciar Sessio</a></li></ul>
     <ul *ngIf="readUserConnection() === 'true'" class="session">
       <li>{{username}}
         <ul>
-          <li><a routerLink="/user-info" routerLinkActive="active">user info</a></li>
-          <li><a href="javascript:void(0)" (click)="logOut()">log out</a></li>
+          <li id="log-out"><a href="javascript:void(0)" (click)="logOut()">log out</a></li>
         </ul>
       </li>
     </ul>

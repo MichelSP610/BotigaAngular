@@ -27,7 +27,17 @@ header .session {
 }
 header .session, header .session li{
   list-style: none;
-  text-align: right;
+  text-align: center;
+}
+header .session li{
+  width: 12vmin;
+  height: 5vmin;
+  background-color: #3eb6e8;
+  border-radius: 0.5vmin;
+}
+header .session li a{
+  width: 100%;
+  height: 100%;
 }
 header .session ul{
   display: none;
@@ -35,11 +45,30 @@ header .session ul{
 }
 header .session li:hover > ul {
   display: block;
+  position: absolute;
+  top: 7.4vmin;
+  right: 2vmin;
+}
+#log-out {
+  background-color: #3eb6e8;
+}
+#log-out a {
+  color: white;
+}
+#log-out:hover {
+  background-color: red;
+}
+#log-in {
+  width: 22vmin;
+  padding: 0;
+}
+#log-in a {
+  width: 100%;
+  height: 100%;
 }
 header .session a {
   text-decoration: none;
   color: white;
-  font-family: "Arial";
 }
 nav {
   display: flex;
