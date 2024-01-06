@@ -1,4 +1,6 @@
-<div>
+
+
+<div id="content">
   <aside>
     <form>
       <label class="cookie_category">Tipus de galeta</label><br>
@@ -11,11 +13,12 @@
     </form>
   </aside>
   <article>
-    <div *ngFor="let galeta of catalegGaletes | filtreGaletes:filtreSeleccionat" [ngClass]="{'galleta-dolca': galeta.gust === 'dolca', 'galleta-salada': galeta.gust === 'salada', 'galleta-integral': galeta.pasta === 'dura'}">
-      <img class="article_image" [src]="getGaletaImage(galeta)">
-      <h2>{{ galeta.nom }}</h2>
-      <p>{{ galeta.pasta }} - {{ galeta.preu }}</p>
-      <div class="tmp_false_button">Comprar</div>
+    <div class="product" *ngFor="let product of products | filtreGaletes: filtreSeleccionat; trackBy: trackByProductId" [ngClass]="{'galleta-dolca': product.gust === 'dolca', 'galleta-salada': product.gust === 'salada', 'galleta-integral': product.pasta === 'dura'}">
+      <img class="article_image" src="{{product.image}}">
+      <h2>{{product.name}}</h2>
+      <p>{{product.description}}</p>
+      <h3>{{ product.price | currency:'EUR' }}</h3>
+      <div class="tmp_false_button" (click)="addToCart(product)">Comprar</div>
     </div>
   </article>
 </div>

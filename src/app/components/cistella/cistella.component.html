@@ -1,66 +1,19 @@
 <article>
   <div id="content">
     <table>
-      <tr>
-        <td class="cart_image">
-          <img src="assets/condensed-milk-cookies.jpg">
-        </td>
-        <td class="cart_item_name">
-          <h2>Galetes de llet condensada</h2>
-        </td>
-        <td class="cart_item_quantity">
-          <button type="button" class="fake_plus-minus_button"> + </button>
-          <h2>1</h2>
-          <button type="button" class="fake_plus-minus_button"> - </button>
-        </td>
-        <td class="cart_item_price">
-          <h2>9,99€</h2>
-        </td>
-        <td class="cart_delete_button">
-          <button type="button" class="fake_delete_button">Eliminar</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="cart_image">
-          <img src="assets/chocolate-chip-cookies.jpg">
-        </td>
-        <td class="cart_item_name">
-          <h2>Galetes de chocolata</h2>
-        </td>
-        <td class="cart_item_quantity">
-          <button type="button" class="fake_plus-minus_button"> + </button>
-          <h2>1</h2>
-          <button type="button" class="fake_plus-minus_button"> - </button>
-        </td>
-        <td class="cart_item_price">
-          <h2>12,99€</h2>
-        </td>
-        <td class="cart_delete_button">
-          <button type="button" class="fake_delete_button">Eliminar</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="cart_image">
-          <img src="assets/integral-cookies.jpg">
-        </td>
-        <td class="cart_item_name">
-          <h2>Galetes integrals</h2>
-        </td>
-        <td class="cart_item_quantity">
-          <button type="button" class="fake_plus-minus_button"> + </button>
-          <h2>1</h2>
-          <button type="button" class="fake_plus-minus_button"> - </button>
-        </td>
-        <td class="cart_item_price">
-          <h2>14,99€</h2>
-        </td>
-        <td class="cart_delete_button">
-          <button type="button" class="fake_delete_button">Eliminar</button>
-        </td>
+      <tr *ngFor="let item of cartService.getItems(); trackBy: trackByProductId">
+        <div id="product">
+          <img class="cart_image" src="{{item.image}}">
+          <h2 class="cart_item_name">{{item.name}}</h2>
+          <h3 class="cart_item_price">Preu: {{item.price | currency:'EUR'}}</h3>
+          <button type="button" class="plus_minus_button" (click)="cartService.incrementQuantity(item.id)"> + </button>
+          <p class="cart_item_quantity">{{item.quantity}}</p>
+          <button type="button" class="plus_minus_button" (click)="cartService.lowerQuantity(item.id)"> - </button>
+          <button class="cart_delete_button" (click)="deleteFromCart(item)">Delete</button>
+        </div>
       </tr>
     </table>
-    <h2>Total: 37,97€</h2>
-    <button type="submit" id="cistella_submit">COMPRAR</button>
+    <h2>Total: {{ cartService.getTotal() | currency:'EUR' }}</h2>
+    <button type="submit" id="cistella_submit" (click)="cartService.deleteCart()">COMPRAR</button>
   </div>
 </article>
-<app-footer></app-footer>

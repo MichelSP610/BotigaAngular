@@ -1,9 +1,11 @@
+
 article {
   width: 100%;
   display: flex;
   justify-content: center;
   padding: 1%;
 }
+
 #content {
   width: 70%;
   padding: 2%;
@@ -16,60 +18,89 @@ article {
   border-radius: 1em;
   font-family: Arial;
 }
+
 table {
   width: 90%;
   border-radius: 1em;
   padding: 1%;
   background-color: #35a0cb;
 }
-tr{
+
+#product {
   display: flex;
+  margin-bottom: 3vh;
   justify-content: space-evenly;
   padding: 1%;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   border-collapse: collapse;
 }
+
 .cart_image {
+  margin: auto;
   width: 20%;
   height: 20vh;
+  border: 2px solid black;
 }
-.cart_image img {
-  width: 100%;
-  height: 100%;
-  border-radius: 0.5em;
-}
+
 .cart_item_name {
-  display: flex;
-  align-items: center;
-  width: 35%;
-  padding-left: 2em;
+  margin: auto;
+  margin-left: 3vh;
+  max-width: 20%;
 }
+
 .cart_item_quantity {
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
   align-items: center;
-  width: 20%;
+  width: 5%;
+  margin: auto;
 }
-.fake_plus-minus_button {
+
+.cart_item_price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5%;
+  margin-right: 5%;
+  height: 20vh;
+}
+
+.plus_minus_button {
   border: 1px solid grey;
   border-radius: 50%;
+  height: 20%;
+  margin: auto;
   color: grey;
   background-color: lightgrey;
   font-size: 1em;
   font-weight: bold;
   padding: 10px 15px 10px 15px;
 }
-.fake_plus-minus_button:active {background-color: #565656;}
+
+.plus_minus_button:active {
+  background-color: #565656;
+}
+
 .cart_delete_button {
   float: right;
-  height: 20vh;
+  height: 5vh;
   width: 15%;
+  margin: auto;
+  border-radius: 10%;
+  font-size: 2vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+.cart_delete_button:hover {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
+
 .fake_delete_button {
   background-color: #ff0000;
   border: 0;
@@ -78,14 +109,11 @@ tr{
   color: white;
   font-size: 1em;
 }
-.fake_delete_button:active {background-color: #9f0000;}
-.cart_item_price {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 10%;
-  height: 20vh;
+
+.fake_delete_button:active {
+  background-color: #9f0000;
 }
+
 #cistella_submit {
   width: 20%;
   margin-top: 2%;
@@ -97,4 +125,8 @@ tr{
   font-weight: bold;
   border: 1px solid black;
 }
-#cistella_submit:active {background-color: green;color: white;}
+
+#cistella_submit:active {
+  background-color: green;
+  color: white;
+}
