@@ -25,8 +25,9 @@ table {
   background-color: #35a0cb;
 }
 
-.cart-item {
+#product {
   display: flex;
+  margin-bottom: 3vh;
   justify-content: space-evenly;
   padding: 1%;
   border-top: 1px solid black;
@@ -35,25 +36,16 @@ table {
 }
 
 .cart_image {
+  margin: auto;
   width: 20%;
   height: 20vh;
+  border: 2px solid black;
 }
 
-.cart_image img {
-  width: 100%;
-  height: 100%;
-  border-radius: 0.5em;
-}
-
-.cart_item_details {
-  display: flex;
-  flex-direction: column;
-  width: 35%;
-  padding-left: 2em;
-}
-
-.cart_item_name h2 {
-  margin: 0; /* Elimina el margen predeterminado del h2 */
+.cart_item_name {
+  margin: auto;
+  margin-left: 3vh;
+  max-width: 20%;
 }
 
 .cart_item_quantity {
@@ -61,20 +53,24 @@ table {
   justify-content: space-evenly;
   flex-direction: row;
   align-items: center;
-  width: 20%;
+  width: 5%;
+  margin: auto;
 }
 
 .cart_item_price {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 10%;
+  width: 5%;
+  margin-right: 5%;
   height: 20vh;
 }
 
-.fake_plus_minus_button {
+.plus_minus_button {
   border: 1px solid grey;
   border-radius: 50%;
+  height: 20%;
+  margin: auto;
   color: grey;
   background-color: lightgrey;
   font-size: 1em;
@@ -82,17 +78,26 @@ table {
   padding: 10px 15px 10px 15px;
 }
 
-.fake_plus_minus_button:active {
+.plus_minus_button:active {
   background-color: #565656;
 }
 
 .cart_delete_button {
   float: right;
-  height: 20vh;
+  height: 5vh;
   width: 15%;
+  margin: auto;
+  border-radius: 10%;
+  font-size: 2vh;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.cart_delete_button:hover {
+  background-color: red;
+  color: white;
+  font-weight: bold;
 }
 
 .fake_delete_button {
