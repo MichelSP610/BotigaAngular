@@ -5,34 +5,35 @@
       <!-- Iniciar Sesió -->
       <div class="iniciar-sesio">
         <h1 id="h1-registrarse">Registrarse</h1>
-        <form>
+        <form [formGroup]="input" (ngSubmit)="onSubmit()">
           <table>
             <tr class="text">
               <td>Nom <span class="req"></span></td>
-              <td><input type="text" required ></td>
+              <td><input type="text" required formControlName="name"></td>
             </tr>
             <tr class="text">
               <td>Cognom <span class="req"></span></td>
-              <td><input type="text" required></td>
+              <td><input type="text" required formControlName="lastName"></td>
             </tr>
             <tr class="text">
               <td>Usuari <span class="req"></span></td>
-              <td><input type="text" required></td>
+              <td><input type="text" required formControlName="user"></td>
             </tr>
             <tr class="text">
               <td>Email <span class="req"></span></td>
-              <td><input type="email" required></td>
+              <td><input type="email" required formControlName="email"></td>
             </tr>
             <tr class="passwd">
               <td>Contraseña <span class="req"></span></td>
-              <td><input type="password" required></td>
+              <td><input type="password" required formControlName="password"></td>
             </tr>
             <tr class="passwd">
               <td>Repetir Contraseña <span class="req"></span></td>
-              <td><input type="password" required></td>
+              <td><input type="password" required formControlName="passwordCheck"></td>
             </tr>
           </table>
           <input type="submit" class="button" value="Registrarse">
+          <p id="register-error"></p>
         </form>
       </div>
       <div class="inciar-registre">
