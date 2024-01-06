@@ -14,15 +14,10 @@ import {SessioService} from "../../serveis/sessio.service";
 })
 export class IniciSessioComponent {
 
-  user: any;
-  password: any;
   loginError: any;
-
   input;
 
   constructor(private formBuilder: FormBuilder, private sessioService: SessioService, private router: Router) {
-    this.user = "";
-    this.password = "";
     this.input = this.formBuilder.group({
       user: '',
       password: '',
