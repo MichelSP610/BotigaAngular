@@ -31,7 +31,8 @@ export class HeaderNavComponent {
 
   }
   logOut() {
-    sessionStorage.setItem('userConnected', 'false')
+    sessionStorage.setItem('username', 'false')
+    sessionStorage.setItem('password', '')
     console.log("user disconnected")
     this.router.navigate([''])
   }
