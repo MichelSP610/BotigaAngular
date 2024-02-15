@@ -1,14 +1,23 @@
 <header>
   <a href="https://orteil.dashnet.org/cookieclicker/"><img src="assets/LOGO.png"></a>
   <h1>Bobby Cookies</h1>
-    <ul *ngIf="readUserConnection() === 'false'" class="session"><li id="log-in"><a routerLink="/login" routerLinkActive="active">Iniciar Sessio</a></li></ul>
+  <div id="inici-registre">
+    <ul *ngIf="readUserConnection() === 'false'" class="session">
+      <li id="log-in"><a routerLink="/login" routerLinkActive="active">Iniciar Sessio</a></li>
+    </ul>
     <ul *ngIf="readUserConnection() === 'true'" class="session">
-      <li>{{username}}
+      <li id="usuari">
+        <div>
+          <img src="/assets/usuariPerfil.png" id="imatge-perfil">
+          <a routerLink="/perfil" routerLinkActive="active">{{username}}</a>
+        </div>
         <ul>
           <li id="log-out"><a href="javascript:void(0)" (click)="logOut()">Log Out</a></li>
         </ul>
       </li>
     </ul>
+    <ul *ngIf="readUserConnection() === 'false'" class="session"><li id="registre"><a routerLink="/registre" routerLinkActive="active">Registrarse</a></li></ul>
+  </div>
 <!--    <p *ngIf="readUserConnection() === 'true'" class="session">{{username}}</p>-->
 </header>
 <nav>
