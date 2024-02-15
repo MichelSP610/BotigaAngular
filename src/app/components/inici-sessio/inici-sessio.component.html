@@ -6,7 +6,7 @@
       <!-- Iniciar Sesió -->
       <div class="iniciar-sesio">
         <h1>Iniciar Sesió</h1>
-        <form [formGroup]="input" (ngSubmit)="onSubmit()">
+        <form [formGroup]="input" (ngSubmit)="onSubmit()" ngNativeValidate>
           <table>
             <tr class="text">
               <td>Usuario <span class="req"></span></td>

@@ -1,13 +1,21 @@
-import { Injectable } from '@angular/core';
-import {Router} from "@angular/router";
+import {Component, Injectable} from '@angular/core';
+import {Router, RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {CommonModule} from "@angular/common";
 
 @Injectable({
   providedIn: 'root'
 })
+
+@Component({
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive, RouterOutlet, CommonModule, HttpClientModule],
+  template: ``
+})
 export class SessioService {
 
   public users: any[];
-  constructor(private router: Router) {
+  constructor(private router: Router, private http: HttpClient) {
     this.users = [];
     if (localStorage.getItem('users') !== null) {
       this.users = JSON.parse(localStorage['users']);
@@ -26,17 +34,17 @@ export class SessioService {
   }
 
   logIn(user: any, password:any) {
-    let userConnected = false;
-    for(let i = 0; i < this.users.length && !userConnected; i++) {
-      if (user === this.users[i].username) {
-        if (password === this.users[i].password) {
-          sessionStorage.setItem('userConnected', 'true');
-          sessionStorage.setItem('userPos', i+'');
-          userConnected = true;
-        }
-      }
+    let req = {username: user, password: password}
+    try {
+      this.http.get<any>('http://localhost:3080/getClientByName', {params: req}).subscribe( (client) => {
+        sessionStorage.setItem('username', client.username)
+        sessionStorage.setItem('password', client.password)
+      })
+      return true;
     }
-    return userConnected;
+    catch (error) {
+      return false;
+    }
   }
 
   addUser(user:any, password:any, name:any, lastName:any, email:any) {
