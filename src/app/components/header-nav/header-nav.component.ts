@@ -15,7 +15,9 @@ export class HeaderNavComponent {
 
   username: any;
   constructor(private sessioService: SessioService, private router: Router, private http: HttpClient) {
+
     console.log(this.sessioService.userExists('admin'))
+
   }
 
   ngOnInit() {

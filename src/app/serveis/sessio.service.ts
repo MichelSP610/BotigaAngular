@@ -1,7 +1,7 @@
 import {Component, Injectable} from '@angular/core';
 import {HttpClient, HttpClientModule, HttpParams} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
-import {Observable} from "rxjs";
+import {firstValueFrom} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,8 @@ import {Observable} from "rxjs";
 
 export class SessioService {
 
-  check: any;
+  public Check: boolean = false;
+
   constructor(private http: HttpClient) {
   }
 
@@ -44,8 +45,8 @@ export class SessioService {
     this.http.post('http://localhost:3080/addClient', data).subscribe()
   }
 
-  userExists(user: any): Observable<Boolean> {
+  async userExists(user: any) {
     let req = new HttpParams().set('username', user)
-    return this.http.get<Boolean>('http://localhost:3080/checkUser', {params: req})
+    return await firstValueFrom(this.http.get<boolean>('http://localhost:3080/checkUser', {params: req}))
   }
 }
