@@ -15,9 +15,6 @@ export class HeaderNavComponent {
 
   username: any;
   constructor(private sessioService: SessioService, private router: Router, private http: HttpClient) {
-
-    console.log(this.sessioService.userExists('admin'))
-
   }
 
   ngOnInit() {
@@ -25,7 +22,7 @@ export class HeaderNavComponent {
 
   readUserConnection():string {
     let userSession = sessionStorage.getItem('username')
-    if (!userSession || userSession === 'false') {
+    if (!userSession || userSession === '') {
       return 'false'
     } else {
       this.username = userSession
@@ -34,7 +31,7 @@ export class HeaderNavComponent {
 
   }
   logOut() {
-    sessionStorage.setItem('username', 'false')
+    sessionStorage.setItem('username', '')
     sessionStorage.setItem('password', '')
     console.log("user disconnected")
     this.router.navigate([''])
