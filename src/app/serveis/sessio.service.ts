@@ -15,8 +15,6 @@ import {firstValueFrom} from "rxjs";
 
 export class SessioService {
 
-  public Check: boolean = false;
-
   constructor(private http: HttpClient) {
   }
 
