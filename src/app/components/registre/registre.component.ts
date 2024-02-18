@@ -26,11 +26,11 @@ export class RegistreComponent {
     });
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.input.value.password === this.input.value.passwordCheck) {
       console.log("password-checked")
 
-      if (this.sessioService.userExists(this.input.value.user)) {
+      if (await this.sessioService.userExists(this.input.value.user)) {
         this.errorP = document.getElementById("register-error");
         this.errorP.innerHTML = "L'usuari ja existeix";
         this.input.reset();
