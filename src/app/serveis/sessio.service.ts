@@ -1,7 +1,7 @@
 import {Component, Injectable} from '@angular/core';
-import {Router, RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HttpClient, HttpClientModule, HttpParams} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -9,28 +9,14 @@ import {CommonModule} from "@angular/common";
 
 @Component({
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, RouterOutlet, CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule],
   template: ``
 })
+
 export class SessioService {
 
-  public users: any[];
-  constructor(private router: Router, private http: HttpClient) {
-    this.users = [];
-    if (localStorage.getItem('users') !== null) {
-      this.users = JSON.parse(localStorage['users']);
-    }
-    else {
-      this.users = [];
-      let user = {
-        username: "admin",
-        password: "patata",
-        name: "admin",
-        lastName: "",
-        email: "nomail@nomail.com",
-      };
-      this.users.push(user);
-    }
+  check: any;
+  constructor(private http: HttpClient) {
   }
 
   logIn(user: any, password:any) {
@@ -48,29 +34,18 @@ export class SessioService {
   }
 
   addUser(user:any, password:any, name:any, lastName:any, email:any) {
-    let userPush = {
+    let data = {
       username: user,
       password: password,
       name: name,
       lastName: lastName,
       email: email,
     }
-    this.users.push(userPush);
-    localStorage.setItem('users', JSON.stringify(this.users));
+    this.http.post('http://localhost:3080/addClient', data).subscribe()
   }
 
-  userExists(user: any) {
-    let userExists = false;
-    for (let i = 0; i < this.users.length && !userExists; i++) {
-      if (user === this.users[i].username) {
-        userExists = true;
-      }
-    }
-    return userExists;
-  }
-
-  getUserName(userPos: any) {
-    userPos = Number(userPos)
-    return this.users[userPos].name;
+  userExists(user: any): Observable<Boolean> {
+    let req = new HttpParams().set('username', user)
+    return this.http.get<Boolean>('http://localhost:3080/checkUser', {params: req})
   }
 }
