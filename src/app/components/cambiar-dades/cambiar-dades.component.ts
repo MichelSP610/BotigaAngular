@@ -20,7 +20,6 @@ export class CambiarDadesComponent {
   input;
   constructor(private formBuilder: FormBuilder,private sessioService: SessioService, private http: HttpClient,  private router: Router) {
     this.input = this.formBuilder.group({
-      user: '',
       password: '',
       name: '',
       lastName: '',
@@ -30,20 +29,16 @@ export class CambiarDadesComponent {
   }
 
   async onSubmit() {
-    if (await this.sessioService.userExists(this.input.value.user)) {
-      this.errorP = document.getElementById("register-error");
-      this.errorP.innerHTML = "L'usuari ja existeix";
-      this.input.reset();
-    }
-    else {
       this.sessioService.cambiarDades(
-        this.input.value.user,
+        sessionStorage.getItem('username'),
         this.input.value.password,
         this.input.value.name,
         this.input.value.lastName,
         this.input.value.email
       );
-      this.router.navigate(['/login']);
-    }
+      sessionStorage.setItem('username', '')
+      sessionStorage.setItem('password', '')
+      this.router.navigate(['/login'])
+
   }
 }
