@@ -18,18 +18,15 @@ export class SessioService {
   constructor(private http: HttpClient) {
   }
 
-  logIn(user: any, password:any) {
+  async logIn(user: any, password:any) {
     let req = {username: user, password: password}
-    try {
-      this.http.get<any>('http://localhost:3080/getClientByName', {params: req}).subscribe( (client) => {
-        sessionStorage.setItem('username', client.username)
-        sessionStorage.setItem('password', client.password)
-      })
+    // this.http.get<any>('http://172.16.9.1:3080/getClientByName', {params: req}).subscribe( (client) => {
+    this.http.get<any>('http://localhost:3080/getClientByName', {params: req}).subscribe( (client) => {
+      sessionStorage.setItem('username', client.username)
+      sessionStorage.setItem('password', client.password)
       return true;
-    }
-    catch (error) {
-      return false;
-    }
+    })
+    return false;
   }
 
   addUser(user:any, password:any, name:any, lastName:any, email:any) {
@@ -40,11 +37,13 @@ export class SessioService {
       lastName: lastName,
       email: email,
     }
+    //this.http.post('http://172.16.9.1:3080/addClient', data).subscribe()
     this.http.post('http://localhost:3080/addClient', data).subscribe()
   }
 
   async userExists(user: any) {
     let req = new HttpParams().set('username', user)
+    // return await firstValueFrom(this.http.get<boolean>('http://172.16.9.1:3080/checkUser', {params: req}))
     return await firstValueFrom(this.http.get<boolean>('http://localhost:3080/checkUser', {params: req}))
   }
 }

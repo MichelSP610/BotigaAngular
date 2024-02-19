@@ -24,9 +24,9 @@ export class IniciSessioComponent {
     });
   }
 
-  onSubmit() {
-    if (this.sessioService.logIn(this.input.value.user, this.input.value.password)) {
-      this.router.navigate([''])
+  async onSubmit() {
+    if (await this.sessioService.logIn(this.input.value.user, this.input.value.password)) {
+      await this.router.navigate([''])
     }
     else {
       this.input.reset();
