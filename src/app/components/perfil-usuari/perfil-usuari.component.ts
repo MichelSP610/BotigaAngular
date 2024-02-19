@@ -23,47 +23,26 @@ export class PerfilUsuariComponent {
   password: any;
   email: any;
   name: any;
-  lastname: any;
+  lastName: any;
 
   constructor(private sessioService: SessioService, private http: HttpClient) {
     let user = sessionStorage.getItem('username');
     let password = sessionStorage.getItem('password');
 
-    if (user && password) {
+    if (user !== null && password !== null) {
       let req = {username: user, password: password};
-
       this.http.get<any>('http://localhost:3080/getClientByName', {params: req}).subscribe((client) => {
-        console.log('Respuesta del servidor:', client);
-
-        sessionStorage.setItem('username', client.username);
-        sessionStorage.setItem('password', client.password);
-        sessionStorage.setItem('email', client.email);
-        sessionStorage.setItem('name', client.name);
-        sessionStorage.setItem('lastname', client.lastname);
-
         // Asigna los valores a las propiedades del componente
         this.username = client.username;
         this.password = client.password;
         this.email = client.email;
         this.name = client.name;
-        this.lastname = client.lastname;
+        this.lastName = client.lastName;
       });
     }
   }
 
   ngOnInit() {
-    console.log(this.username)
-  }
-
-
-  readUserConnection():string {
-    let userSession = sessionStorage.getItem('userConnected')
-    if (!userSession || userSession === 'false') {
-      return 'false'
-    } else {
-      this.username = this.sessioService.getUserName(sessionStorage.getItem('userPos'))
-      return 'true';
-    }
   }
 
 }
