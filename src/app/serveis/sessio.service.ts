@@ -20,7 +20,7 @@ export class SessioService {
 
   async logIn(user: any, password:any) {
     let req = {username: user, password: password}
-    // const check = this.http.get<boolean>('http://172.16.9.1:3080/logIn', {params: req})
+    // const check = await firstValueFrom(this.http.get<boolean>('http://localhost:3080/logIn', {params: req}))
     const check = await firstValueFrom(this.http.get<boolean>('http://localhost:3080/logIn', {params: req}))
 
     if (check) {
