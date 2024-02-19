@@ -22,6 +22,10 @@
 
 h1 {
   font-size: 4vmin;
+  font-family: "Arial Rounded MT Bold";
+  text-shadow: 0px 0px 5px #0c338f, 0px 0px 10px #93c6d3, 0px 0px 10px #052570,
+  0px 0px 20px #38383a;
+  color: lightgray;
 }
 
 #imatgeUsuari {
@@ -33,7 +37,7 @@ h1 {
 }
 
 #username-cell {
-  padding-left: 3vmin;
+  padding-left: 7vmin;
   width: 45%;
 }
 
@@ -42,7 +46,28 @@ h1 {
   margin: auto;
 }
 
-#email-cell, #name-cell, #lastName-cell {
+#email-cell {
   margin: auto;
   width: 100%;
+}
+
+#name-cell, #lastName-cell {
+  width: 40%;
+  margin-left: 4vmin;
+}
+#password-cell, #btn-cell {
+  width: 40%;
+  margin-left: 4vmin;
+}
+
+#btn {
+  width: 80%;
+  margin-left: 4vmin;
+  padding: 1vmin;
+  font-size: 3vmin;
+  background-color: transparent;
+  font-family: "Baskerville Old Face";
+  text-shadow: 0px 0px 5px #0c338f, 0px 0px 10px #93c6d3, 0px 0px 10px #052570,
+  0px 0px 20px #38383a;
+  color: lightgray;
 }
