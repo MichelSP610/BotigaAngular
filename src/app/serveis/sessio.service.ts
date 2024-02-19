@@ -21,11 +21,14 @@ export class SessioService {
   async logIn(user: any, password:any) {
     let req = {username: user, password: password}
     // const check = await firstValueFrom(this.http.get<boolean>('http://localhost:3080/logIn', {params: req}))
-    const check = await firstValueFrom(this.http.get<boolean>('http://localhost:3080/logIn', {params: req}))
+    let check = await firstValueFrom(this.http.get<boolean>('http://localhost:3080/logIn', {params: req}))
 
     if (check) {
-      sessionStorage.setItem('username', user)
-      sessionStorage.setItem('password', password)
+      //this.http.get<any>('http://localhost:3080/getClientByName', {params: req}).subscribe( (client) => {
+      this.http.get<any>('http://localhost:3080/getClientByName', {params: req}).subscribe( (client) => {
+        sessionStorage.setItem('username', client.username)
+        sessionStorage.setItem('password', client.password)
+      })
     }
     return check;
   }
@@ -46,5 +49,11 @@ export class SessioService {
     let req = new HttpParams().set('username', user)
     // return await firstValueFrom(this.http.get<boolean>('http://172.16.9.1:3080/checkUser', {params: req}))
     return await firstValueFrom(this.http.get<boolean>('http://localhost:3080/checkUser', {params: req}))
+  }
+
+  async checkUserByEmail(email: any) {
+    let req = new HttpParams().set('email', email)
+    // return await firstValueFrom(this.http.get<boolean>('http://172.16.9.1:3080/checkUserByEmail', {params: req}))
+    return await firstValueFrom(this.http.get<boolean>('http://localhost:3080/checkUserByEmail', {params: req}))
   }
 }

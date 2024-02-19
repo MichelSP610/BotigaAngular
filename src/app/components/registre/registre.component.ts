@@ -35,6 +35,11 @@ export class RegistreComponent {
         this.errorP.innerHTML = "L'usuari ja existeix";
         this.input.reset();
       }
+      else if (await this.sessioService.checkUserByEmail(this.input.value.email)) {
+        this.errorP = document.getElementById("register-error");
+        this.errorP.innerHTML = "El correu ja ha sigut utilitzat";
+        this.input.reset();
+      }
       else {
         this.sessioService.addUser(
           this.input.value.user,
