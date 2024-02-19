@@ -59,4 +59,16 @@ export class SessioService {
     // return await firstValueFrom(this.http.get<boolean>('http://172.16.9.1:3080/checkUserByEmail', {params: req}))
     return await firstValueFrom(this.http.get<boolean>('http://localhost:3080/checkUserByEmail', {params: req}))
   }
+
+  cambiarDades(user:any, password:any, name:any, lastName:any, email:any) {
+    let Userdata = {
+      username: user,
+      password: password,
+      name: name,
+      lastName: lastName,
+      email: email,
+    }
+    //this.http.post('http://172.16.9.1:3080/addClient', data).subscribe()
+    this.http.post('http://localhost:3080/cambiarData', Userdata).subscribe()
+  }
 }

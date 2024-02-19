@@ -8,7 +8,7 @@
     <ul *ngIf="readUserConnection() === 'true'" class="session">
       <li id="usuari">
         <div>
-          <img src="/assets/usuariPerfil.png" id="imatge-perfil">
+          <img src="/assets/usuariPerfil.png" id="imatge-perfil" routerLink="/perfil" routerLinkActive="active">
           <a routerLink="/perfil" routerLinkActive="active">{{username}}</a>
         </div>
         <ul>
