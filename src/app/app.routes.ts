@@ -8,6 +8,7 @@ import {CondicionsComponent} from "./components/condicions/condicions.component"
 import {PrivacitatComponent} from "./components/privacitat/privacitat.component";
 import {IniciSessioComponent} from "./components/inici-sessio/inici-sessio.component";
 import {PerfilUsuariComponent} from "./components/perfil-usuari/perfil-usuari.component";
+import {EnviarEmailComponent} from "./components/enviar-email/enviar-email.component";
 
 export const routes: Routes = [
   {path: '', component:IniciComponent},
@@ -18,5 +19,6 @@ export const routes: Routes = [
   {path: 'condicions', component:CondicionsComponent},
   {path: 'privacitat', component:PrivacitatComponent},
   {path: 'login', component:IniciSessioComponent},
-  {path: 'perfil', component:PerfilUsuariComponent}
+  {path: 'perfil', component:PerfilUsuariComponent},
+  {path: 'enviar-email', component:EnviarEmailComponent}
 ];
