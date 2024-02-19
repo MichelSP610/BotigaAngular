@@ -23,13 +23,16 @@ export class SessioService {
     // const check = await firstValueFrom(this.http.get<boolean>('http://localhost:3080/logIn', {params: req}))
     let check = await firstValueFrom(this.http.get<boolean>('http://localhost:3080/logIn', {params: req}))
 
-    if (check) {
-      //this.http.get<any>('http://localhost:3080/getClientByName', {params: req}).subscribe( (client) => {
+    let req2 = new HttpParams().set('username', user)
+    //if (check && await firstValueFrom(this.http.get<boolean>('http://172.16.9.1:3080/checkValidated', {params: req2}))) {
+    if (check && await firstValueFrom(this.http.get<boolean>('http://localhost:3080/checkValidated', {params: req2}))) {
+      //this.http.get<any>('http://172.16.9.1:3080/getClientByName', {params: req}).subscribe( (client) => {
       this.http.get<any>('http://localhost:3080/getClientByName', {params: req}).subscribe( (client) => {
         sessionStorage.setItem('username', client.username)
         sessionStorage.setItem('password', client.password)
       })
     }
+    else {check = false}
     return check;
   }
 
