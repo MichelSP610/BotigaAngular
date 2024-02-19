@@ -4,12 +4,22 @@
       <img src="/assets/usuariPerfil.png" id="imatgeUsuari">
     </td>
     <td class="content" id="username-cell">
-      <h1 *ngIf="readUserConnection() === 'true'" id="username">{{ username }}</h1>
+      <h1 id="username">{{ username }}</h1>
     </td>
   </tr>
   <tr>
     <td class="content" id="email-cell">
-      <h1 *ngIf="readUserConnection() === 'true'" id="email">{{ email }}</h1>
+      <h1 id="email">{{ email }}</h1>
+    </td>
+  </tr>
+  <tr>
+    <td class="content" id="name-cell">
+      <h1 id="name">{{ name }}</h1>
+    </td>
+  </tr>
+  <tr>
+    <td class="content" id="lastName-cell">
+      <h1 id="lastName">{{ lastName }}</h1>
     </td>
   </tr>
 </table>

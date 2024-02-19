@@ -42,7 +42,7 @@ h1 {
   margin: auto;
 }
 
-#email-cell {
+#email-cell, #name-cell, #lastName-cell {
   margin: auto;
   width: 100%;
 }
