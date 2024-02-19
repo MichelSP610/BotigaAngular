@@ -1,0 +1,5 @@
+<form [formGroup]="input" (ngSubmit)="onSubmit()" ngNativeValidate>
+  <input type="email" required formControlName="email">
+  <input type="submit" class="button" value="Enviar">
+  <p id="email-error"></p>
+</form>
