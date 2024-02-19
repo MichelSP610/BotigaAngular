@@ -20,13 +20,14 @@ export class SessioService {
 
   async logIn(user: any, password:any) {
     let req = {username: user, password: password}
-    // this.http.get<any>('http://172.16.9.1:3080/getClientByName', {params: req}).subscribe( (client) => {
-    this.http.get<any>('http://localhost:3080/getClientByName', {params: req}).subscribe( (client) => {
-      sessionStorage.setItem('username', client.username)
-      sessionStorage.setItem('password', client.password)
-      return true;
-    })
-    return false;
+    // const check = this.http.get<boolean>('http://172.16.9.1:3080/getClientByName', {params: req})
+    const check = await firstValueFrom(this.http.get<boolean>('http://localhost:3080/getClientByName', {params: req}))
+
+    if (check) {
+      sessionStorage.setItem('username', user)
+      sessionStorage.setItem('password', password)
+    }
+    return check;
   }
 
   addUser(user:any, password:any, name:any, lastName:any, email:any) {
