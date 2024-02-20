@@ -3,20 +3,20 @@
   <h1>Bobby Cookies</h1>
   <div id="inici-registre">
     <ul *ngIf="readUserConnection() === 'false'" class="session">
-      <li id="log-in"><a routerLink="/login" routerLinkActive="active">Iniciar Sessio</a></li>
+      <li id="log-in"><a routerLink="/login" routerLinkActive="active" class="username">Iniciar Sessio</a></li>
     </ul>
     <ul *ngIf="readUserConnection() === 'true'" class="session">
       <li id="usuari">
         <div>
           <img src="/assets/usuariPerfil.png" id="imatge-perfil" routerLink="/perfil" routerLinkActive="active">
-          <a routerLink="/perfil" routerLinkActive="active">{{username}}</a>
+          <a routerLink="/perfil" routerLinkActive="active" class="username">{{username}}</a>
         </div>
         <ul>
-          <li id="log-out"><a href="javascript:void(0)" (click)="logOut()">Log Out</a></li>
+          <li id="log-out"><a href="javascript:void(0)" (click)="logOut()" class="username">Log Out</a></li>
         </ul>
       </li>
     </ul>
-    <ul *ngIf="readUserConnection() === 'false'" class="session"><li id="registre"><a routerLink="/registre" routerLinkActive="active">Registrarse</a></li></ul>
+    <ul *ngIf="readUserConnection() === 'false'" class="session"><li id="registre"><a routerLink="/registre" routerLinkActive="active" class="username">Registrarse</a></li></ul>
   </div>
 <!--    <p *ngIf="readUserConnection() === 'true'" class="session">{{username}}</p>-->
 </header>

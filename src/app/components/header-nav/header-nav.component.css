@@ -70,6 +70,9 @@ header .session li:hover > ul {
 #usuari {
   width: 30vmin;
 }
+.username {
+  font-family: "Times New Roman";
+}
 #log-in a, #registre a {
   width: 100%;
   height: 100%;
