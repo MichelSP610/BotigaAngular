@@ -20,14 +20,14 @@ export class SessioService {
 
   async logIn(user: any, password:any) {
     let req = {username: user, password: password}
-    // const check = await firstValueFrom(this.http.get<boolean>('http://localhost:3080/logIn', {params: req}))
-    let check = await firstValueFrom(this.http.get<boolean>('http://localhost:3080/logIn', {params: req}))
+    let check = await firstValueFrom(this.http.get<boolean>('http://172.16.9.1:3080/logIn', {params: req}))
+    //let check = await firstValueFrom(this.http.get<boolean>('http://localhost:3080/logIn', {params: req}))
 
     let req2 = new HttpParams().set('username', user)
-    //if (check && await firstValueFrom(this.http.get<boolean>('http://172.16.9.1:3080/checkValidated', {params: req2}))) {
-    if (check && await firstValueFrom(this.http.get<boolean>('http://localhost:3080/checkValidated', {params: req2}))) {
-      //this.http.get<any>('http://172.16.9.1:3080/getClientByName', {params: req}).subscribe( (client) => {
-      this.http.get<any>('http://localhost:3080/getClientByName', {params: req}).subscribe( (client) => {
+    if (check && await firstValueFrom(this.http.get<boolean>('http://172.16.9.1:3080/checkValidated', {params: req2}))) {
+    //if (check && await firstValueFrom(this.http.get<boolean>('http://localhost:3080/checkValidated', {params: req2}))) {
+      this.http.get<any>('http://172.16.9.1:3080/getClientByName', {params: req}).subscribe( (client) => {
+      //this.http.get<any>('http://localhost:3080/getClientByName', {params: req}).subscribe( (client) => {
         sessionStorage.setItem('username', client.username)
         sessionStorage.setItem('password', client.password)
       })
@@ -44,20 +44,20 @@ export class SessioService {
       lastName: lastName,
       email: email,
     }
-    //this.http.post('http://172.16.9.1:3080/addClient', data).subscribe()
-    this.http.post('http://localhost:3080/addClient', data).subscribe()
+    this.http.post('http://172.16.9.1:3080/addClient', data).subscribe()
+    //this.http.post('http://localhost:3080/addClient', data).subscribe()
   }
 
   async userExists(user: any) {
     let req = new HttpParams().set('username', user)
-    // return await firstValueFrom(this.http.get<boolean>('http://172.16.9.1:3080/checkUser', {params: req}))
-    return await firstValueFrom(this.http.get<boolean>('http://localhost:3080/checkUser', {params: req}))
+    return await firstValueFrom(this.http.get<boolean>('http://172.16.9.1:3080/checkUser', {params: req}))
+    //return await firstValueFrom(this.http.get<boolean>('http://localhost:3080/checkUser', {params: req}))
   }
 
   async checkUserByEmail(email: any) {
     let req = new HttpParams().set('email', email)
-    // return await firstValueFrom(this.http.get<boolean>('http://172.16.9.1:3080/checkUserByEmail', {params: req}))
-    return await firstValueFrom(this.http.get<boolean>('http://localhost:3080/checkUserByEmail', {params: req}))
+    return await firstValueFrom(this.http.get<boolean>('http://172.16.9.1:3080/checkUserByEmail', {params: req}))
+    //return await firstValueFrom(this.http.get<boolean>('http://localhost:3080/checkUserByEmail', {params: req}))
   }
 
   cambiarDades(user:any, password:any, name:any, lastName:any, email:any) {
@@ -68,7 +68,7 @@ export class SessioService {
       lastName: lastName,
       email: email,
     }
-    //this.http.post('http://172.16.9.1:3080/addClient', data).subscribe()
-    this.http.post('http://localhost:3080/cambiarData', Userdata).subscribe()
+    this.http.post('http://172.16.9.1:3080/cambiarData', Userdata).subscribe()
+    //this.http.post('http://localhost:3080/cambiarData', Userdata).subscribe()
   }
 }
