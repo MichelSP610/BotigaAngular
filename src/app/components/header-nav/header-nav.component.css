@@ -73,6 +73,9 @@ header .session li:hover > ul {
 .username {
   font-family: "Times New Roman";
 }
+#usuari {
+  width: 25vmin;
+}
 #log-in a, #registre a {
   width: 100%;
   height: 100%;

@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
-
 import {HeaderNavComponent} from "./components/header-nav/header-nav.component";
 import {FooterComponent} from "./components/footer/footer.component";
 import {CatalegComponent} from "./components/cataleg/cataleg.component";
 import { FiltreGaletesPipe} from "./components/pipes/filtre-galetes.pipe";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+
 
 
 @Component({
@@ -24,6 +25,7 @@ export class AppComponent {
   imports: [
     CommonModule,
     BrowserModule,
+    NgbModule,
     FormsModule,
   ],
   bootstrap: [AppComponent],
