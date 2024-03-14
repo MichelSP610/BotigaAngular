@@ -71,4 +71,9 @@ export class SessioService {
     this.http.post('http://172.16.9.1:3080/cambiarData', Userdata).subscribe()
     //this.http.post('http://localhost:3080/cambiarData', Userdata).subscribe()
   }
+
+  getImageLink(image: any) {
+    return 'http://localhost:3080/images/' + image;
+    //return 'http://172.16.9.1:3080/images/' + image;
+  }
 }
