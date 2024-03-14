@@ -16,6 +16,7 @@ header img {
 header h1 {
   display: inline-block;
   margin-left: -15vmin;
+  margin-top: 4vmin;
   font-size: 6vmin;
   font-family: "Imprint MT Shadow";
   text-shadow: 0px 0px 5px #0c338f, 0px 0px 10px #93c6d3, 0px 0px 10px #052570,
@@ -108,6 +109,7 @@ nav li {
   display: inline-block;
   justify-content: center;
   text-align: center;
+  margin-top: 2vmin;
   width: 20%;
   text-shadow: 0px 0px 5px #0c338f, 0px 0px 10px #93c6d3, 0px 0px 10px #052570,
   0px 0px 20px #38383a;
@@ -115,6 +117,7 @@ nav li {
 nav li a {
   font-size: 2.2vmin;
   text-decoration: none;
+  background-color: transparent;
   color: white;
   font-weight: 600;
 }
