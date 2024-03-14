@@ -25,7 +25,10 @@ export class PerfilUsuariComponent {
   name: any;
   lastName: any;
 
+  usuariImg: any;
   constructor(private sessioService: SessioService, private http: HttpClient) {
+    this.usuariImg = this.sessioService.getImageLink('usuariPerfil.png')
+
     let user = sessionStorage.getItem('username');
     let password = sessionStorage.getItem('password');
 

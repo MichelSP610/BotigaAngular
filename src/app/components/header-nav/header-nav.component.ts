@@ -14,7 +14,11 @@ import {HttpClient, HttpClientModule, HttpParams} from "@angular/common/http";
 export class HeaderNavComponent {
 
   username: any;
+  logoImg: any;
+  usuariImg: any;
   constructor(private sessioService: SessioService, private router: Router, private http: HttpClient) {
+    this.logoImg = this.sessioService.getImageLink('LOGO.png')
+    this.usuariImg = this.sessioService.getImageLink('usuariPerfil.png')
   }
 
   ngOnInit() {
