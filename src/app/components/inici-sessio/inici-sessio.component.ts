@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FormBuilder} from '@angular/forms';
 import {NgForm} from "@angular/forms"
 import {SessioService} from "../../serveis/sessio.service";
+import {CistellaService} from "../../serveis/cistella.service";
 
 @Component({
   selector: 'app-inici-sessio',
@@ -17,7 +18,7 @@ export class IniciSessioComponent {
   loginError: any;
   input;
 
-  constructor(private formBuilder: FormBuilder, private sessioService: SessioService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private sessioService: SessioService, private router: Router, private cistellaService: CistellaService) {
     this.input = this.formBuilder.group({
       user: '',
       password: '',
@@ -26,6 +27,7 @@ export class IniciSessioComponent {
 
   async onSubmit() {
     if (await this.sessioService.logIn(this.input.value.user, this.input.value.password)) {
+      this.cistellaService.setCart();
       await this.router.navigate([''])
     }
     else {

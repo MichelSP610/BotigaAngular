@@ -35,9 +35,9 @@ export class HeaderNavComponent {
 
   }
   logOut() {
+    this.sessioService.sendLog(sessionStorage.getItem('username'), "Ha tancat la sessio")
     sessionStorage.setItem('username', '')
     sessionStorage.setItem('password', '')
-    console.log("user disconnected")
     this.router.navigate([''])
   }
 }

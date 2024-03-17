@@ -2,6 +2,7 @@ import {Component, Injectable} from '@angular/core';
 import {HttpClient, HttpClientModule, HttpParams} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
 import {firstValueFrom} from "rxjs";
+import {CistellaService} from "./cistella.service";
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,8 @@ export class SessioService {
       this.http.get<any>('http://localhost:3080/getClientByName', {params: req}).subscribe( (client) => {
         sessionStorage.setItem('username', client.username)
         sessionStorage.setItem('password', client.password)
+        this.sendLog(client.username, "Ha iniciat sessió")
+
       })
     }
     else {check = false}
@@ -46,6 +49,7 @@ export class SessioService {
     }
     //this.http.post('http://172.16.9.1:3080/addClient', data).subscribe()
     this.http.post('http://localhost:3080/addClient', data).subscribe()
+    this.sendLog(user, "S'ha creat l'usuari")
   }
 
   async userExists(user: any) {
@@ -75,5 +79,9 @@ export class SessioService {
   getImageLink(image: any) {
     //return 'http://172.16.9.1:3080/images/' + image;
     return 'http://localhost:3080/images/' + image;
+  }
+
+  sendLog(user: any, log: any) {
+    this.http.post('http://localhost:3080/logs', {user: user, log: log}).subscribe()
   }
 }
