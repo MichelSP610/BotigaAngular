@@ -20,20 +20,12 @@ aside {
 .cookie_type{
   width: 30%;
 }
-
-.tmp_false_button{
-  border: 1px solid black;
-  background-color: green;
-  border-radius: 1em;
-  color: white;
-  width: 40%;
-  height: 7%;
-  margin: auto;
-}
 .cookie_type {
   margin-left: 5vh;
 }
-
+#comprar {
+  margin-top: auto;
+}
 .cookie_category {
   font-size: 3vh;
   font-weight: bold;
