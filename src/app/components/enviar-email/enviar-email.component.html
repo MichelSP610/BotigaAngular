@@ -2,7 +2,7 @@
   <h1>Escriu el correu de recuperació</h1>
   <form [formGroup]="input" (ngSubmit)="onSubmit()" ngNativeValidate id="correu">
     <input type="email" required formControlName="email">
-    <input type="submit" class="button" value="Enviar">
+    <input class="btn btn-primary" type="submit" value="Enviar">
     <p id="email-error"></p>
   </form>
   <div class="popup">
