@@ -25,13 +25,17 @@ export class PerfilUsuariComponent {
   name: any;
   lastName: any;
 
+  usuariImg: any;
   constructor(private sessioService: SessioService, private http: HttpClient) {
+    this.usuariImg = this.sessioService.getImageLink('usuariPerfil.png')
+
     let user = sessionStorage.getItem('username');
     let password = sessionStorage.getItem('password');
 
     if (user !== null && password !== null) {
       let req = {username: user, password: password};
-      this.http.get<any>('http://172.16.9.1:3080/getClientByName', {params: req}).subscribe((client) => {
+      //this.http.get<any>('http://172.16.9.1:3080/getClientByName', {params: req}).subscribe((client) => {
+      this.http.get<any>('http://localhost:3080/getClientByName', {params: req}).subscribe((client) => {
         // Asigna los valores a las propiedades del componente
         this.username = client.username;
         this.password = client.password;

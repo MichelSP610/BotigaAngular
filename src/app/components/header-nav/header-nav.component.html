@@ -1,5 +1,5 @@
 <header>
-  <a href="https://orteil.dashnet.org/cookieclicker/"><img src="assets/LOGO.png"></a>
+  <a href="https://orteil.dashnet.org/cookieclicker/"><img src="{{logoImg}}"></a>
   <h1>Bobby Cookies</h1>
   <div id="inici-registre">
     <ul *ngIf="readUserConnection() === 'false'" class="session">
@@ -8,7 +8,7 @@
     <ul *ngIf="readUserConnection() === 'true'" class="session">
       <li id="usuari">
         <div>
-          <img src="/assets/usuariPerfil.png" id="imatge-perfil" routerLink="/perfil" routerLinkActive="active">
+          <img src="{{usuariImg}}" id="imatge-perfil" routerLink="/perfil" routerLinkActive="active">
           <a routerLink="/perfil" routerLinkActive="active" class="username">{{username}}</a>
         </div>
         <ul>
