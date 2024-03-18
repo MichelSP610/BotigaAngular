@@ -84,7 +84,7 @@ header .session li:hover > ul {
 #imatge-perfil {
   height: 5vmin;
   width: 5vmin;
-  margin: 0;
+  margin: 1vmin 0 0;
 }
 header .session a {
   text-decoration: none;
