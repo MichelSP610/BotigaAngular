@@ -3,6 +3,7 @@ import {RouterLink, RouterLinkActive, RouterOutlet, Router} from "@angular/route
 import {SessioService} from "../../serveis/sessio.service";
 import {Form, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FormBuilder} from '@angular/forms';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-registre',
@@ -15,7 +16,7 @@ export class RegistreComponent {
 
   errorP: any;
   input;
-  constructor(private formBuilder: FormBuilder, private sessioService: SessioService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private sessioService: SessioService, private router: Router, private http: HttpClient) {
     this.input = this.formBuilder.group({
       user: '',
       password: '',
@@ -26,7 +27,21 @@ export class RegistreComponent {
     });
   }
 
-  async onSubmit() {
+  async onSubmit(formularioData: any) {
+
+    // Realizar la solicitud POST al servidor
+    this.http.post<any>('http://localhost:3080/guardar-archivo', formularioData)
+      .subscribe(
+        response => {
+          console.log('Respuesta del servidor:', response);
+          // Puedes agregar lógica adicional aquí, por ejemplo, mostrar un mensaje de éxito
+        },
+        error => {
+          console.error('Error al enviar el formulario:', error);
+          // Puedes agregar lógica adicional aquí, por ejemplo, mostrar un mensaje de error
+        }
+      );
+
     if (this.input.value.password === this.input.value.passwordCheck) {
       console.log("password-checked")
 

@@ -6,23 +6,23 @@
         <!-- Iniciar Sesió -->
         <div class="iniciar-sesio">
           <h1 id="h1-contacte">Contacte</h1>
-          <form>
+          <form (ngSubmit)="onSubmit(formulario.value)" #formulario="ngForm">
             <table>
               <tr class="text">
                 <td><strong>Nom</strong> <span class="req"></span></td>
-                <td><input type="text" required ></td>
+                <td><input type="text" name="Nombre" required ngModel></td>
               </tr>
               <tr class="text">
                 <td><strong>Email</strong><span class="req"></span></td>
-                <td><input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <td><input type="email" name="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" ngModel></td>
               </tr>
               <tr class="text">
                 <td>Asumpte <span class="req"></span></td>
-                <td><input type="text" name="introduir_asumpte" required="obligatori" placeholder="Escriu un asumpte"></td>
+                <td><input type="text" name="Asumpte" required="obligatori" placeholder="Escriu un asumpte" ngModel></td>
               </tr>
               <tr class="text">
                 <td>Missatge <span class="req"></span></td>
-                <td><textarea name="introduir_missatge" class="text_missatge" id="missatge" required="obligatori" placeholder="Deixa aquí el teu comentari..."></textarea></td>
+                <td><textarea name="Missatge" class="text_missatge" id="missatge" required="obligatori" placeholder="Deixa aquí el teu comentari..." ngModel></textarea></td>
               </tr>
             </table>
             <button type="submit" class="button" name="enviar_formulari" id="enviar">
