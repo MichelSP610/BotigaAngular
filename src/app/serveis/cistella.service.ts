@@ -9,48 +9,44 @@ import {Router} from "@angular/router";
 export class CistellaService {
 
   constructor(private sessioService: SessioService, private router: Router) {}
-  private user = sessionStorage.getItem('username')
-  private items: any[] = JSON.parse(localStorage.getItem(this.user + 'cartItems') || '[]');
+  private user: any;
+  private items: any[] = [];
 
   addToCart(product: any) {
-    let user = sessionStorage.getItem('username')
-    if (!user || user === '') {
+    if (!this.user || this.user === '') {
       this.router.navigate(['/login'])
     }
     this.items.push(product);
 
-    localStorage.setItem(user + 'cartItems', JSON.stringify(this.items))
+    localStorage.setItem(this.user + 'cartItems', JSON.stringify(this.items))
     this.sessioService.sendLog(sessionStorage.getItem('username'), "Ha afegit el producte " + product.name + " a la cistella")
   }
 
   deleteFromCart(item: any) {
-    let user = sessionStorage.getItem('username')
     this.items = this.items.filter((i) => i.id !== item.id)
 
-    localStorage.setItem(user + 'cartItems', JSON.stringify(this.items))
+    localStorage.setItem(this.user + 'cartItems', JSON.stringify(this.items))
     this.sessioService.sendLog(sessionStorage.getItem('username'), "Ha eliminat el producte " + item.name + " de la cistella")
   }
 
   incrementQuantity(id: number) {
-    let user = sessionStorage.getItem('username')
     let item = this.items.find((i) => i.id === id)
     if (item) {
       item.quantity++
       this.sessioService.sendLog(sessionStorage.getItem('username'), "Ha incrementat el numero de " + item.name + " a comprar a " + item.quantity)
     }
 
-    localStorage.setItem(user + 'cartItems', JSON.stringify(this.items))
+    localStorage.setItem(this.user + 'cartItems', JSON.stringify(this.items))
   }
 
   lowerQuantity(id: number) {
-    let user = sessionStorage.getItem('username')
     let item = this.items.find((i) => i.id === id)
     if (item && item.quantity > 1) {
       item.quantity--
       this.sessioService.sendLog(sessionStorage.getItem('username'), "Ha reduit el numero de " + item.name + " a comprar a " + item.quantity)
     }
 
-    localStorage.setItem(user + 'cartItems', JSON.stringify(this.items))
+    localStorage.setItem(this.user + 'cartItems', JSON.stringify(this.items))
   }
 
   getTotal() {
@@ -60,10 +56,9 @@ export class CistellaService {
   }
 
   deleteCart() {
-    let user = sessionStorage.getItem('username')
     this.items = []
 
-    localStorage.setItem(user + 'cartItems', JSON.stringify(this.items))
+    localStorage.setItem(this.user + 'cartItems', JSON.stringify(this.items))
     this.sessioService.sendLog(sessionStorage.getItem('username'), "Ha realitzat la compra de la cistella")
     this.router.navigate([''])
   }
@@ -73,7 +68,11 @@ export class CistellaService {
   }
 
   setCart() {
-    let user = sessionStorage.getItem('username')
-    this.items = JSON.parse(localStorage.getItem(user + 'cartItems') || '[]')
+    this.items = JSON.parse(localStorage.getItem(this.user + 'cartItems') || '[]')
+  }
+
+  setCartData() {
+    this.user = sessionStorage.getItem('username')
+    this.items = JSON.parse(localStorage.getItem(this.user + 'cartItems') || '[]')
   }
 }
