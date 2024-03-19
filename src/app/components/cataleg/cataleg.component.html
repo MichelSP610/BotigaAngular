@@ -18,7 +18,7 @@
       <h2>{{product.name}}</h2>
       <p>{{product.description}}</p>
       <h3>{{ product.price | currency:'EUR' }}</h3>
-      <div class="tmp_false_button" (click)="addToCart(product)">Comprar</div>
+      <button id="comprar" class="btn btn-success" (click)="addToCart(product)">Comprar</button>
     </div>
   </article>
 </div>

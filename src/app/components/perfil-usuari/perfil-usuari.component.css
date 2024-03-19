@@ -18,6 +18,8 @@
   max-height: fit-content;
   height: fit-content;
   text-align: center;
+  margin-top: 4vmin;
+  margin-bottom: 2vmin;
 }
 
 h1 {

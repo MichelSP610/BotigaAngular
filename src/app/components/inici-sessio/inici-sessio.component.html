@@ -6,15 +6,15 @@
       <!-- Iniciar Sesió -->
       <div class="iniciar-sesio">
         <h1>Iniciar Sesió</h1>
-        <form [formGroup]="input" (ngSubmit)="onSubmit()" ngNativeValidate>
+        <form [formGroup]="input" (ngSubmit)="onSubmit(formulario.value)" #formulario="ngForm" ngNativeValidate>
           <table>
             <tr class="text">
               <td>Usuario <span class="req"></span></td>
-              <td><input type="text" required formControlName="user" ></td>
+              <td><input type="text" name="User" required formControlName="user" ></td>
             </tr>
             <tr class="passwd">
               <td>Contrasenya <span class="req"></span></td>
-              <td><input type="password" formControlName="password" required></td>
+              <td><input type="password" name="Password" class="form-control" id="exampleInputPassword1" formControlName="password" required></td>
             </tr>
           </table>
           <p class="forgot"><a href="/enviar-email">Se't ha oblidat la contrasenya?</a></p>
