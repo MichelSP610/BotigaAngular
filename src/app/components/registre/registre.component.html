@@ -32,6 +32,9 @@
               <td><input type="password" required formControlName="passwordCheck"></td>
             </tr>
           </table>
+          <div class="recaptcha">
+            <re-captcha (resolved)="onResolved($event)" siteKey="6LeYW54pAAAAAGmVgba2c4teTJR1Jv2UEg5UDQk4"></re-captcha>
+          </div>
           <input type="submit" class="button" value="Registrarse">
           <p id="register-error"></p>
         </form>
