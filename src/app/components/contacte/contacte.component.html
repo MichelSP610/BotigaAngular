@@ -25,6 +25,9 @@
                 <td><textarea name="introduir_missatge" class="text_missatge" id="missatge" required="obligatori" placeholder="Deixa aquí el teu comentari..."></textarea></td>
               </tr>
             </table>
+            <div class="recaptcha">
+              <re-captcha (resolved)="onResolved($event)" siteKey="6LeYW54pAAAAAGmVgba2c4teTJR1Jv2UEg5UDQk4"></re-captcha>
+            </div>
             <button type="submit" class="button" name="enviar_formulari" id="enviar">
               <p>Enviar</p>
             </button>

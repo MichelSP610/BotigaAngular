@@ -3,16 +3,21 @@ import {RouterLink, RouterLinkActive, RouterOutlet, Router} from "@angular/route
 import {SessioService} from "../../serveis/sessio.service";
 import {Form, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FormBuilder} from '@angular/forms';
+import {RecaptchaModule} from "ng-recaptcha";
 
 @Component({
   selector: 'app-registre',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, RouterOutlet, FormsModule, ReactiveFormsModule],
+  imports: [RouterLink, RouterLinkActive, RouterOutlet, FormsModule, ReactiveFormsModule, RecaptchaModule],
   templateUrl: './registre.component.html',
   styleUrl: './registre.component.css'
 })
 export class RegistreComponent {
-
+  recaptcha: string | null | undefined;
+  onResolved(captchaResponse: string | null){
+    this.recaptcha=captchaResponse;
+    console.log(this.recaptcha);
+  }
   errorP: any;
   input;
   constructor(private formBuilder: FormBuilder, private sessioService: SessioService, private router: Router) {
