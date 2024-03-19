@@ -36,6 +36,7 @@ export class CambiarDadesComponent {
         this.input.value.lastName,
         this.input.value.email
       );
+      this.sessioService.sendLog(sessionStorage.getItem('username'),"S'han canviat les dades de l'usuari")
       sessionStorage.setItem('username', '')
       sessionStorage.setItem('password', '')
       this.router.navigate(['/login'])
