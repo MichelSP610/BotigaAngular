@@ -34,7 +34,7 @@ export class SessioService {
       this.http.get<any>('http://localhost:3080/getClientByName', {params: req}).subscribe( (client) => {
         sessionStorage.setItem('username', client.username)
         sessionStorage.setItem('password', client.password)
-        // this.sendLog(client.username, "Ha iniciat sessió")
+        this.sendLog(client.username, "Ha iniciat sessió")
 
       })
     }

@@ -19,21 +19,21 @@ export class CistellaService {
     this.items.push(product);
 
     localStorage.setItem(this.user + 'cartItems', JSON.stringify(this.items))
-    // this.sessioService.sendLog(sessionStorage.getItem('username'), "Ha afegit el producte " + product.name + " a la cistella")
+    this.sessioService.sendLog(sessionStorage.getItem('username'), "Ha afegit el producte " + product.name + " a la cistella")
   }
 
   deleteFromCart(item: any) {
     this.items = this.items.filter((i) => i.id !== item.id)
 
     localStorage.setItem(this.user + 'cartItems', JSON.stringify(this.items))
-    // this.sessioService.sendLog(sessionStorage.getItem('username'), "Ha eliminat el producte " + item.name + " de la cistella")
+    this.sessioService.sendLog(sessionStorage.getItem('username'), "Ha eliminat el producte " + item.name + " de la cistella")
   }
 
   incrementQuantity(id: number) {
     let item = this.items.find((i) => i.id === id)
     if (item) {
       item.quantity++
-      // this.sessioService.sendLog(sessionStorage.getItem('username'), "Ha incrementat el numero de " + item.name + " a comprar a " + item.quantity)
+      this.sessioService.sendLog(sessionStorage.getItem('username'), "Ha incrementat el numero de " + item.name + " a comprar a " + item.quantity)
     }
 
     localStorage.setItem(this.user + 'cartItems', JSON.stringify(this.items))
@@ -43,7 +43,7 @@ export class CistellaService {
     let item = this.items.find((i) => i.id === id)
     if (item && item.quantity > 1) {
       item.quantity--
-      // this.sessioService.sendLog(sessionStorage.getItem('username'), "Ha reduit el numero de " + item.name + " a comprar a " + item.quantity)
+      this.sessioService.sendLog(sessionStorage.getItem('username'), "Ha reduit el numero de " + item.name + " a comprar a " + item.quantity)
     }
 
     localStorage.setItem(this.user + 'cartItems', JSON.stringify(this.items))
@@ -59,7 +59,7 @@ export class CistellaService {
     this.items = []
 
     localStorage.setItem(this.user + 'cartItems', JSON.stringify(this.items))
-    // this.sessioService.sendLog(sessionStorage.getItem('username'), "Ha realitzat la compra de la cistella")
+    this.sessioService.sendLog(sessionStorage.getItem('username'), "Ha realitzat la compra de la cistella")
     this.router.navigate([''])
   }
 
