@@ -15,10 +15,11 @@ import {SessioService} from "../../serveis/sessio.service";
   styleUrl: './cataleg.component.css'
 })
 export class CatalegComponent {
+  cartService = inject(CistellaService)
 
   constructor(private sessioService: SessioService) {
+    this.cartService.setCartData()
   }
-  cartService = inject(CistellaService)
 
   filtreSeleccionat: { dolca: boolean, salada: boolean, dura: boolean, tova: boolean, liquida: boolean } = {
     dolca: false,

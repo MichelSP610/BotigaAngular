@@ -20,9 +20,12 @@ export class SessioService {
   }
 
   async logIn(user: any, password:any) {
+    console.log("LogIn function triggered")
     let req = {username: user, password: password}
+    console.log(req.username, req.password)
     //let check = await firstValueFrom(this.http.get<boolean>('http://172.16.9.1:3080/logIn', {params: req}))
     let check = await firstValueFrom(this.http.get<boolean>('http://localhost:3080/logIn', {params: req}))
+    console.log(check)
 
     let req2 = new HttpParams().set('username', user)
     //if (check && await firstValueFrom(this.http.get<boolean>('http://172.16.9.1:3080/checkValidated', {params: req2}))) {
@@ -31,7 +34,7 @@ export class SessioService {
       this.http.get<any>('http://localhost:3080/getClientByName', {params: req}).subscribe( (client) => {
         sessionStorage.setItem('username', client.username)
         sessionStorage.setItem('password', client.password)
-        this.sendLog(client.username, "Ha iniciat sessió")
+        // this.sendLog(client.username, "Ha iniciat sessió")
 
       })
     }

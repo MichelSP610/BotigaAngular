@@ -16,12 +16,13 @@ export class CistellaComponent {
 
   constructor(private router: Router) {
     let checkUser = sessionStorage.getItem('username')
-    if (!checkUser || checkUser === 'false') {
+    if (!checkUser || checkUser === '') {
       this.router.navigate(['/login'])
     }
-    if (this.cartService.getItems().length === 0) {
+    else if (this.cartService.getItems().length === 0) {
       this.router.navigate(['/cataleg'])
     }
+    else {this.cartService.setCartData()}
   }
 
   deleteFromCart(item: any) {
