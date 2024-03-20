@@ -16,10 +16,21 @@ export class CistellaService {
     if (!this.user || this.user === '') {
       this.router.navigate(['/login'])
     }
-    this.items.push(product);
+    if (!this.itemInCart(product)) {
+      this.items.push(product);
+    }
 
     localStorage.setItem(this.user + 'cartItems', JSON.stringify(this.items))
     this.sessioService.sendLog(sessionStorage.getItem('username'), "Ha afegit el producte " + product.name + " a la cistella")
+  }
+
+  itemInCart(product: any) {
+    for (let i = 0; i < this.items.length; i++) {
+      if (product.name == this.items[i].name) {
+        return true
+      }
+    }
+    return false
   }
 
   deleteFromCart(item: any) {
