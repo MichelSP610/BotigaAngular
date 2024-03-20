@@ -3,6 +3,7 @@ import {FooterComponent} from "../footer/footer.component";
 import {HttpClient} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {RecaptchaModule} from "ng-recaptcha";
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-contacte',
   standalone: true,
@@ -19,7 +20,7 @@ export class ContacteComponent {
     console.log(this.recaptcha);
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   onSubmit(formularioData: any) {
     // Realizar la solicitud POST al servidor
@@ -34,6 +35,7 @@ export class ContacteComponent {
           // Puedes agregar lógica adicional aquí, por ejemplo, mostrar un mensaje de error
         }
       );
+    this.router.navigate([''])
   }
 
 }
