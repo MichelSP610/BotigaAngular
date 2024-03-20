@@ -4,11 +4,12 @@ import {HttpClient} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {RecaptchaModule} from "ng-recaptcha";
 import {Router} from "@angular/router";
+import {NgIf} from "@angular/common";
 @Component({
   selector: 'app-contacte',
   standalone: true,
   imports: [
-    FormsModule, RecaptchaModule
+    FormsModule, RecaptchaModule, NgIf
   ],
   templateUrl: './contacte.component.html',
   styleUrl: './contacte.component.css'
@@ -24,7 +25,8 @@ export class ContacteComponent {
 
   onSubmit(formularioData: any) {
     // Realizar la solicitud POST al servidor
-    this.http.post<any>('http://localhost:3080/guardar-archivo', formularioData)
+    this.http.post<any>('http://172.16.9.1:3080/guardar-archivo', formularioData)
+    //this.http.post<any>('http://localhost:3080/guardar-archivo', formularioData)
       .subscribe(
         response => {
           console.log('Respuesta del servidor:', response);
