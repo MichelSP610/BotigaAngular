@@ -69,6 +69,11 @@ export class CistellaService {
     }, 0)
   }
 
+  guardarCompra() {
+    this.sessioService.enviarCompra(this.items);
+    this.deleteCart();
+  }
+
   deleteCart() {
     this.items = []
 

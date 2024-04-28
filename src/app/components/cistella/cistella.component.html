@@ -14,6 +14,6 @@
       </tr>
     </table>
     <h2>Total: {{ cartService.getTotal() | currency:'EUR' }}</h2>
-    <button type="submit" id="cistella_submit" class="btn btn-success" (click)="cartService.deleteCart()">COMPRAR</button>
+    <button type="submit" id="cistella_submit" class="btn btn-success" (click)="cartService.guardarCompra()">COMPRAR</button>
   </div>
 </article>
