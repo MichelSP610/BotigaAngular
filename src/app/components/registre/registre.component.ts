@@ -5,11 +5,12 @@ import {Form, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FormBuilder} from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 import {RecaptchaModule} from "ng-recaptcha";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-registre',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, RouterOutlet, FormsModule, ReactiveFormsModule, RecaptchaModule],
+  imports: [RouterLink, RouterLinkActive, RouterOutlet, FormsModule, ReactiveFormsModule, RecaptchaModule, NgIf],
   templateUrl: './registre.component.html',
   styleUrl: './registre.component.css'
 })

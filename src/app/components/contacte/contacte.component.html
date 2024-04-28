@@ -1,4 +1,4 @@
-<article>
+ <article>
   <div class="formulari">
     <ul class="contenidor-tabs">
       <!-- Contingut dels Formularis -->
@@ -6,7 +6,7 @@
         <!-- Iniciar Sesió -->
         <div class="iniciar-sesio">
           <h1 id="h1-contacte">Contacte</h1>
-          <form (ngSubmit)="onSubmit(formulario.value)" #formulario="ngForm">
+          <form (ngSubmit)="onSubmit(formulario.value)" #formulario="ngForm" ngNativeValidate>
             <table>
               <tr class="text">
                 <td><strong>Nom</strong> <span class="req"></span></td>
@@ -28,7 +28,10 @@
             <div class="recaptcha">
               <re-captcha (resolved)="onResolved($event)" siteKey="6LeYW54pAAAAAGmVgba2c4teTJR1Jv2UEg5UDQk4"></re-captcha>
             </div>
-            <button type="submit" class="button" name="enviar_formulari" id="enviar">
+            <button *ngIf="this.recaptcha !== undefined && this.recaptcha !== null" type="submit" class="button" name="enviar_formulari" id="enviar1">
+              <p>Enviar</p>
+            </button>
+            <button *ngIf="this.recaptcha === undefined || this.recaptcha === null" type="" class="button" name="enviar_formulari" id="enviar2" disabled>
               <p>Enviar</p>
             </button>
           </form>

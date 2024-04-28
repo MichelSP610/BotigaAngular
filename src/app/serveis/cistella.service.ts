@@ -16,12 +16,15 @@ export class CistellaService {
     if (!this.user || this.user === '') {
       this.router.navigate(['/login'])
     }
-    if (!this.itemInCart(product)) {
-      this.items.push(product);
+    else {
+      if (!this.itemInCart(product)) {
+        this.items.push(product);
+      }
+
+      localStorage.setItem(this.user + 'cartItems', JSON.stringify(this.items))
+      this.sessioService.sendLog(sessionStorage.getItem('username'), "Ha afegit el producte " + product.name + " a la cistella")
     }
 
-    localStorage.setItem(this.user + 'cartItems', JSON.stringify(this.items))
-    this.sessioService.sendLog(sessionStorage.getItem('username'), "Ha afegit el producte " + product.name + " a la cistella")
   }
 
   itemInCart(product: any) {
@@ -71,7 +74,6 @@ export class CistellaService {
 
     localStorage.setItem(this.user + 'cartItems', JSON.stringify(this.items))
     this.sessioService.sendLog(sessionStorage.getItem('username'), "Ha realitzat la compra de la cistella")
-    this.router.navigate([''])
   }
 
   getItems() {

@@ -32,8 +32,8 @@ export class EnviarEmailComponent {
   async onSubmit() {
     if (await this.sessioService.checkUserByEmail(this.input.value.email)) {
       let data = {email: this.input.value.email}
-      //this.http.post('http://172.16.9.1:3080/sendEmail', data).subscribe()
-      this.http.post('http://localhost:3080/sendEmail', data).subscribe()
+      this.http.post('http://172.16.9.1:3080/sendEmail', data).subscribe()
+      //this.http.post('http://localhost:3080/sendEmail', data).subscribe()
       this.input.reset();
       this.showPopup()
     }
