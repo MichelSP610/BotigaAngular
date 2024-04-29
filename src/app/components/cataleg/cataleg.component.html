@@ -13,11 +13,14 @@
     </form>
   </aside>
   <article>
-    <div class="product" *ngFor="let product of products | filtreGaletes: filtreSeleccionat; trackBy: trackByProductId" [ngClass]="{'galleta-dolca': product.gust === 'dolca', 'galleta-salada': product.gust === 'salada', 'galleta-integral': product.pasta === 'dura'}">
+    <div class="product" *ngFor="let product of Products | filtreGaletes: filtreSeleccionat; trackBy: trackByProductId" [ngClass]="{'galleta-dolca': product.gust === 'dolca', 'galleta-salada': product.gust === 'salada', 'galleta-integral': product.pasta === 'dura'}">
       <img class="article_image" src="{{product.image}}">
       <h2>{{product.name}}</h2>
       <p>{{product.description}}</p>
       <h3>{{ product.price | currency:'EUR' }}</h3>
+      <div id="offert" *ngIf="product.oferta > 0">
+        <h4><p id="discount-label">Descompte:</p> {{product.oferta}}%</h4>
+      </div>
       <button id="comprar" class="btn btn-success" (click)="addToCart(product)">Comprar</button>
     </div>
   </article>

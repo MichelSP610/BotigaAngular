@@ -70,3 +70,20 @@ article div p {
 .tmp_false_button:active {
   background-color: darkgreen;
 }
+
+#discount-label {
+  display: inline;
+  margin: 0;
+  color: #b76866;
+}
+
+#offert {
+  margin: 0;
+  border: none;
+}
+
+#offert h4 {
+  color: red;
+  font-size: 2vmin;
+  margin: 0;
+}
