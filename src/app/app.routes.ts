@@ -10,6 +10,7 @@ import {IniciSessioComponent} from "./components/inici-sessio/inici-sessio.compo
 import {PerfilUsuariComponent} from "./components/perfil-usuari/perfil-usuari.component";
 import {CambiarDadesComponent} from "./components/cambiar-dades/cambiar-dades.component";
 import {EnviarEmailComponent} from "./components/enviar-email/enviar-email.component";
+import {AfegirProducteComponent} from "./components/afegir-producte/afegir-producte.component";
 
 export const routes: Routes = [
   {path: '', component:IniciComponent},
@@ -22,5 +23,6 @@ export const routes: Routes = [
   {path: 'login', component:IniciSessioComponent},
   {path: 'perfil', component:PerfilUsuariComponent},
   {path: 'enviar-email', component:EnviarEmailComponent},
-  {path: 'cambiarDades', component:CambiarDadesComponent}
+  {path: 'cambiarDades', component:CambiarDadesComponent},
+  {path: 'afegirProductes', component:AfegirProducteComponent},
 ];

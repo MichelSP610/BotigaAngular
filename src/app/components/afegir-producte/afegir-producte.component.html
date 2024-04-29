@@ -1,0 +1,45 @@
+<article>
+  <div class="formulari">
+    <h1 id="h1-afgegir">Afegir Producte</h1>
+    <form [formGroup]="producto" (ngSubmit)="onSubmit(formulario.value)" #formulario="ngForm" enctype="multipart/form-data" ngNativeValidate>
+      <table>
+        <tr class="text">
+          <td><strong>Nom</strong> <span class="req"></span></td>
+          <td><input type="text" name="producte_nom" formControlName="nom" required ></td>
+        </tr>
+        <tr class="text">
+          <td><strong>Descripció</strong><span class="req"></span></td>
+          <td><textarea name="producte_descripcio" class="text_missatge" formControlName="descripcio" required placeholder="Escriu una descripció..."></textarea></td>
+        </tr>
+        <tr class="text">
+          <td><strong>Preu</strong> <span class="req"></span></td>
+          <td><input type="number" name="producte_preu" step="0.01" formControlName="preu" required></td>
+        </tr>
+        <tr class="text">
+          <td><strong>Gust</strong> <span class="req"></span></td>
+          <td>
+            <select name="producte_gust" formControlName="gust" required>
+              <option value="dolç">Dolç</option>
+              <option value="salat">Salat</option>
+            </select>
+          </td>
+        </tr>
+        <tr class="text">
+          <td><strong>Pasta</strong> <span class="req"></span></td>
+          <td>
+            <select name="producte_pasta" formControlName="pasta" required>
+              <option value="Dura">Dura</option>
+              <option value="Tova">Tova</option>
+              <option value="Liquida">Liquida</option>
+            </select>
+          </td>
+        </tr>
+        <tr class="text">
+          <td><strong>Imatge</strong> <span class="req"></span></td>
+          <td><input type="file" name="producte_imatge" accept="image/*" formControlName="imatge" required></td>
+        </tr>
+      </table>
+      <button type="submit" class="button">Guardar</button>
+    </form>
+  </div>
+</article>

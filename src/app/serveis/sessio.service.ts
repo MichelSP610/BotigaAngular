@@ -94,4 +94,15 @@ export class SessioService {
     // this.http.post('http://172.16.9.1:3080/guardarFactura', cart).subscribe()
     this.http.post('http://localhost:3080/guardarFactura', {client: sessionStorage.getItem('username'), cart: cart}).subscribe()
   }
+
+  addProduct(productoData: any) {
+    this.http.post('http://localhost:3080/agregarProducto', productoData).subscribe(
+      response => {
+        console.log('Producto agregado correctamente:', response);
+      },
+      error => {
+        console.error('Error al agregar el producto:', error);
+      }
+    );
+  }
 }
