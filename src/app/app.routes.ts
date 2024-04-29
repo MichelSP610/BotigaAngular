@@ -25,6 +25,6 @@ export const routes: Routes = [
   {path: 'perfil', component:PerfilUsuariComponent},
   {path: 'enviar-email', component:EnviarEmailComponent},
   {path: 'cambiarDades', component:CambiarDadesComponent},
-  {path: 'afegir-producte', component:AfegirProducteComponent},
+  {path: 'afegirProductes', component:AfegirProducteComponent},
   {path: 'grafiques', component:GrafiquesComponent}
 ];
