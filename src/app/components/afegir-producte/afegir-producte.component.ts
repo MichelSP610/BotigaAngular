@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {SessioService} from "../../serveis/sessio.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -16,7 +17,12 @@ import {SessioService} from "../../serveis/sessio.service";
 })
 export class AfegirProducteComponent {
   producto;
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private sessioService: SessioService) {
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router, private sessioService: SessioService) {
+    let user = sessionStorage.getItem('username')
+    if (user !== 'admin') {
+      this.router.navigate([''])
+    }
+
     this.producto = this.formBuilder.group({
       nom: '',
       descripcio: '',
@@ -39,6 +45,8 @@ export class AfegirProducteComponent {
       };
 
       this.sessioService.addProduct(productoData);
+
+      this.producto.reset();
     }
   }
 
