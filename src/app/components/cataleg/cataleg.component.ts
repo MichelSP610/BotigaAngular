@@ -2,23 +2,52 @@
 import {Component, inject} from '@angular/core';
 import {FooterComponent} from "../footer/footer.component"
 import {CistellaService} from "../../serveis/cistella.service";
-import {CurrencyPipe, NgClass, NgForOf} from "@angular/common";
+import {CurrencyPipe, NgClass, NgForOf, NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {FiltreGaletesPipe} from "../pipes/filtre-galetes.pipe";
 import {SessioService} from "../../serveis/sessio.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-cataleg',
   standalone: true,
-  imports: [FooterComponent, NgForOf, CurrencyPipe, FormsModule, NgClass, FiltreGaletesPipe],
+  imports: [FooterComponent, NgForOf, CurrencyPipe, FormsModule, NgClass, FiltreGaletesPipe, NgIf],
   templateUrl: './cataleg.component.html',
   styleUrl: './cataleg.component.css'
 })
 export class CatalegComponent {
   cartService = inject(CistellaService)
+  Products: any[] = [];
 
-  constructor(private sessioService: SessioService) {
+  constructor(private sessioService: SessioService, private http: HttpClient) {
     this.cartService.setCartData()
+    this.getProducts();
+  }
+
+  getProducts() {
+    this.http.get<any[]>('http://localhost:3080/getProducts').subscribe((data) => {
+      this.Products = data.map(prod => {
+        const price = prod.producte_preu;
+        const discount = prod.producte_oferta;
+        const discountedPrice = price - (price * (discount / 100));
+
+        if (discount > 0) {
+          const valor = discount;
+        }
+
+        return {
+          name: prod.producte_nom,
+          id: prod.producte_id,
+          quantity: 1,
+          image: this.sessioService.getImageLink(prod.producte_imatge),
+          gust: prod.producte_gust,
+          pasta: prod.producte_pasta,
+          oferta: prod.producte_oferta,
+          price: discountedPrice,
+          description: prod.producte_descripcio
+        };
+      });
+    });
   }
 
   filtreSeleccionat: { dolca: boolean, salada: boolean, dura: boolean, tova: boolean, liquida: boolean } = {
@@ -29,14 +58,6 @@ export class CatalegComponent {
     liquida: false
   };
 
-  products: any[] = [
-    {name: 'Galetes de llet condensada', id: 1, quantity: 1, image: this.sessioService.getImageLink('condensed-milk-cookies.jpg'), gust: 'dolca', pasta: 'liquida', price: 9.99, description: '1kg de galetes de llet condensada de la marca Fornais'},
-    {name: 'Galetes de chocolata', id: 2, quantity: 1, image: this.sessioService.getImageLink('chocolate-chip-cookies.jpg'), gust: 'dolca', pasta: 'tova', price: 12.99, description: '1kg de galetes de chocolata de la marca Fornais'},
-    {name: 'Galetes de integrals', id: 3, quantity: 1, image: this.sessioService.getImageLink('integral-cookies.jpg'), gust: 'dolca', pasta: 'dura', price: 14.99, description: '1kg de galetes itegrals de la marca Fornais'},
-    {name: 'Galetes de pizza', id: 4, quantity: 1, image: this.sessioService.getImageLink('GalletaPizza.jpg'), gust: 'salada', pasta: 'tova', price: 9.99, description: '1kg de galetes de llet condensada de la marca Fornais'},
-    {name: 'Galetes saladitas', id: 5, quantity: 1, image: this.sessioService.getImageLink('Saladitas.jpg'), gust: 'salada', pasta: 'dura', price: 12.99, description: '1kg de galetes de chocolata de la marca Fornais'},
-    {name: 'Galetes snakers', id: 6,  quantity: 1, image: this.sessioService.getImageLink('Snakers.jpg'), gust: 'salada', pasta: 'liquida', price: 14.99, description: '1kg de galetes itegrals de la marca Fornais'}
-  ];
 
   addToCart(product: any) {
     this.cartService.addToCart(product);
