@@ -137,6 +137,7 @@ export class GrafiquesComponent {
   }
 
   async getSeriesForChart() {
+    // let series = await firstValueFrom(this.http.get('http://172.16.9.1:3080/productesVenutsSemana')).then((data) => {
     let series = await firstValueFrom(this.http.get('http://localhost:3080/productesVenutsSemana')).then((data) => {
       return data;
     })
@@ -145,6 +146,7 @@ export class GrafiquesComponent {
   }
 
   async getSeriesForChartOferta() {
+    // let series = await firstValueFrom(this.http.get('http://172.16.9.1:3080/productesVenutsEnOferta')).then((data) => {
     let series = await firstValueFrom(this.http.get('http://localhost:3080/productesVenutsEnOferta')).then((data) => {
       return data;
     })
