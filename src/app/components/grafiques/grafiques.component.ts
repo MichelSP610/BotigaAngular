@@ -32,7 +32,8 @@ export class GrafiquesComponent {
   public chartOptions2: Partial<ChartOptions>;
 
   constructor(private http: HttpClient, private router: Router) {
-    if (sessionStorage.getItem('username') !== 'admin') {
+    let user = sessionStorage.getItem('username')
+    if (user !== 'admin') {
       this.router.navigate([''])
     }
     this.chartOptions = {
