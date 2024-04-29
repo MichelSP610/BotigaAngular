@@ -24,6 +24,14 @@ export class HeaderNavComponent {
   ngOnInit() {
   }
 
+  isAdmin() {
+    let userSession = sessionStorage.getItem('username')
+    if (userSession === 'admin') {
+      return true;
+    }
+    return false;
+  }
+
   readUserConnection():string {
     let userSession = sessionStorage.getItem('username')
     if (!userSession || userSession === '') {

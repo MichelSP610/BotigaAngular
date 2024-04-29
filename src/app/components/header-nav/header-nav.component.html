@@ -20,13 +20,25 @@
   </div>
 <!--    <p *ngIf="readUserConnection() === 'true'" class="session">{{username}}</p>-->
 </header>
-<nav class="navbar navbar-dark bg-primary">
+<nav *ngIf="!isAdmin()" class="navbar navbar-dark bg-primary">
   <ul>
     <li><a routerLink="" routerLinkActive="active">Pagina principal</a></li>
     <li><a routerLink="/cataleg" routerLinkActive="active">Catàleg</a></li>
     <li><a routerLink="/cistella" routerLinkActive="active">Cistella</a></li>
     <li><a routerLink="/condicions" routerLinkActive="active">Condicions</a></li>
     <li><a routerLink="/contacte" routerLinkActive="active">Contacte</a></li>
+  </ul>
+</nav>
+
+<nav *ngIf="isAdmin()" class="navbar navbar-dark bg-primary">
+  <ul>
+    <li ><a routerLink="" routerLinkActive="active">Pagina principal</a></li>
+    <li><a routerLink="/cataleg" routerLinkActive="active">Catàleg</a></li>
+    <li><a routerLink="/cistella" routerLinkActive="active">Cistella</a></li>
+    <li><a routerLink="/condicions" routerLinkActive="active">Condicions</a></li>
+    <li><a routerLink="/contacte" routerLinkActive="active">Contacte</a></li>
+    <li><a routerLink="/afegir-producte" routerLinkActive="active">Afegir Producte</a></li>
+    <li><a routerLink="/grafiques" routerLinkActive="active">Grafiques</a></li>
   </ul>
 </nav>
 
