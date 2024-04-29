@@ -31,10 +31,6 @@ export class CatalegComponent {
         const discount = prod.producte_oferta;
         const discountedPrice = price - (price * (discount / 100));
 
-        if (discount > 0) {
-          const valor = discount;
-        }
-
         return {
           name: prod.producte_nom,
           id: prod.producte_id,
