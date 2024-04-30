@@ -1,0 +1,45 @@
+#general {
+  width: 80%;
+  height: 100%;
+  margin: 3vh auto;
+  background-color: white;
+  display: flex;
+  align-content: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.factura {
+  width: 80%;
+  margin: 3vmin auto;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.facturaData {
+  margin: 3vh auto;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.producteData {
+  margin: 3vh auto;
+}
+
+.preuFinal {
+  margin: 3vh auto;
+  text-align: right;
+}
+
+table, tr, th, td{
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 1vh;
+}
+
+.tableNum {
+  text-align: right;
+
+}
