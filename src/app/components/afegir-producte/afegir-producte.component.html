@@ -36,7 +36,7 @@
         </tr>
         <tr class="text">
           <td><strong>Imatge</strong> <span class="req"></span></td>
-          <td><input type="file" name="producte_imatge" accept="image/*" formControlName="imatge" required></td>
+          <td><input type="file" name="producte_imatge" accept="image/*" formControlName="imatge" required (change)="handleFile($event)"></td>
         </tr>
       </table>
       <button type="submit" class="button">Guardar</button>

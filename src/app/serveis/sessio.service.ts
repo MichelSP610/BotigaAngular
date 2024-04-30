@@ -95,8 +95,8 @@ export class SessioService {
     this.http.post('http://localhost:3080/guardarFactura', {client: sessionStorage.getItem('username'), cart: cart}).subscribe()
   }
 
-  addProduct(productoData: any) {
-    this.http.post('http://localhost:3080/agregarProducto', productoData).subscribe(
+  addProduct(productoData: any, imatge: File) {
+    this.http.post('http://localhost:3080/agregarProducto', {producto: productoData, imatge: imatge}).subscribe(
       response => {
         console.log('Producto agregado correctamente:', response);
       },
