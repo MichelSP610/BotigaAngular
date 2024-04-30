@@ -21,14 +21,14 @@
           <td class="tableNum" *ngIf="producte.detall_oferta != null">{{producte.detall_oferta}}%</td>
           <td class="tableNum" *ngIf="producte.detall_oferta == null">0%</td>
           <td class="tableNum" *ngIf="producte.detall_oferta != null">
-            {{((producte.detall_preu - (producte.detall_preu * producte.detall_oferta) / 100)) * producte.detall_quantitat}}
+            {{ ((producte.detall_preu - (producte.detall_preu * producte.detall_oferta) / 100)) * producte.detall_quantitat | number:'1.2-2' }}
           </td>
           <td class="tableNum" *ngIf="producte.detall_oferta == null">
-            {{producte.detall_preu * producte.detall_quantitat}}
+            {{ producte.detall_preu * producte.detall_quantitat | number:'1.2-2' }}
           </td>
         </tr>
       </table>
-      <p class="preuFinal">Preu Final: {{getFacturaTotal(factura)}}</p>
+      <p class="preuFinal">Preu Final: {{ getFacturaTotal(factura) | number:'1.2-2' | currency:'EUR'}}</p>
     </div>
   </div>
 </div>
