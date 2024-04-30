@@ -27,11 +27,7 @@ export class FacturaComponent {
   getFacturaTotal(factura: any) {
     let preuFinal = 0
     factura.data.forEach((producte: any) => {
-      if (producte.detall_oferta == null || producte.detall_oferta == 0) {
-        preuFinal += producte.detall_preu * producte.detall_quantitat;
-      } else {
-        preuFinal += ((producte.detall_preu - (producte.detall_preu * producte.detall_oferta) / 100)) * producte.detall_quantitat;
-      }
+      preuFinal += ((producte.detall_preu - (producte.detall_preu * producte.detall_oferta) / 100)) * producte.detall_quantitat;
     })
     return preuFinal;
   }

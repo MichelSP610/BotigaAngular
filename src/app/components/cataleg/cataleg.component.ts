@@ -27,10 +27,6 @@ export class CatalegComponent {
   getProducts() {
     this.http.get<any[]>('http://localhost:3080/getProducts').subscribe((data) => {
       this.Products = data.map(prod => {
-        const price = prod.producte_preu;
-        const discount = prod.producte_oferta;
-        const discountedPrice = price - (price * (discount / 100));
-
         return {
           name: prod.producte_nom,
           id: prod.producte_id,
@@ -39,7 +35,7 @@ export class CatalegComponent {
           gust: prod.producte_gust,
           pasta: prod.producte_pasta,
           oferta: prod.producte_oferta,
-          price: discountedPrice,
+          price: prod.producte_preu,
           description: prod.producte_descripcio
         };
       });
