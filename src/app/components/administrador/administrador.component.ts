@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import {Router} from "@angular/router";
+import {Router, RouterLink, RouterLinkActive} from "@angular/router";
 import {SessioService} from "../../serveis/sessio.service";
 
 @Component({
   selector: 'app-administrador',
   standalone: true,
     imports: [
+        RouterLink,
+        RouterLinkActive
     ],
   templateUrl: './administrador.component.html',
   styleUrl: './administrador.component.css'
