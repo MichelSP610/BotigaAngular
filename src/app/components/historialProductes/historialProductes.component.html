@@ -1,0 +1,25 @@
+<div class="formulari">
+  <h1>HISTORIAL VENTAS</h1>
+  <div *ngIf="historialProductos.length > 0">
+    <table>
+      <thead>
+      <tr>
+        <th>ID Factura</th>
+        <th>ID Producte</th>
+        <th>Quantitat</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let producto of historialProductos">
+        <td>{{ producto.detall_factura_id }}</td>
+        <td>{{ producto.detall_producte_id }}</td>
+        <td>{{ producto.detall_quantitat }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="historialProductos.length === 0">
+    <p>No hay productos en el historial.</p>
+  </div>
+</div>
