@@ -1,0 +1,29 @@
+<h1>HISTORIAL PRODUCTES</h1>
+<!-- historial-productes.component.html -->
+
+<div *ngIf="historialProductos.length > 0">
+  <h2>Historial de Productos</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Precio</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let producto of historialProductos">
+      <td>{{ producto.id }}</td>
+      <td>{{ producto.nombre }}</td>
+      <td>{{ producto.descripcion }}</td>
+      <td>{{ producto.precio }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="historialProductos.length === 0">
+  <p>No hay productos en el historial.</p>
+</div>
+
