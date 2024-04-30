@@ -1,0 +1,36 @@
+<div id="general">
+  <div *ngFor="let factura of factures" class="factura">
+    <div class="facturaData">
+      <p>Factura ID: {{factura.factura_id}}</p>
+      <p>Factura Data: {{factura.factura_data.substring(0,10)}}</p>
+      <p>Client: {{factura.client}}</p>
+    </div>
+    <div class="producteData">
+      <table>
+        <tr>
+          <th>Nom Producte</th>
+          <th>Preu</th>
+          <th>Quantitat</th>
+          <th>Oferta</th>
+          <th>Total</th>
+        </tr>
+        <tr *ngFor="let producte of factura.data">
+          <td>{{producte.producte_nom}}</td>
+          <td class="tableNum">{{producte.detall_preu}}</td>
+          <td class="tableNum">{{producte.detall_quantitat}}</td>
+          <td class="tableNum" *ngIf="producte.detall_oferta != null">{{producte.detall_oferta}}%</td>
+          <td class="tableNum" *ngIf="producte.detall_oferta == null">0%</td>
+          <td class="tableNum" *ngIf="producte.detall_oferta != null">
+            {{ ((producte.detall_preu - (producte.detall_preu * producte.detall_oferta) / 100)) * producte.detall_quantitat | number:'1.2-2' }}
+          </td>
+          <td class="tableNum" *ngIf="producte.detall_oferta == null">
+            {{ producte.detall_preu * producte.detall_quantitat | number:'1.2-2' }}
+          </td>
+        </tr>
+      </table>
+      <p class="preuFinal">Preu Final: {{ getFacturaTotal(factura) | number:'1.2-2' | currency:'EUR'}}</p>
+    </div>
+  </div>
+</div>
+
+

@@ -14,6 +14,7 @@ import {AfegirProducteComponent} from "./components/afegir-producte/afegir-produ
 import {GrafiquesComponent} from "./components/grafiques/grafiques.component";
 import {HistorialProductesComponent} from "./components/historialProductes/historialProductes.component";
 import {AdministradorComponent} from "./components/administrador/administrador.component";
+import { FacturaComponent } from './components/factura/factura.component';
 
 export const routes: Routes = [
   {path: '', component:IniciComponent},
@@ -31,4 +32,6 @@ export const routes: Routes = [
   {path: 'grafiques', component:GrafiquesComponent},
   {path: 'administrador', component:AdministradorComponent},
   {path: 'historialProductes', component:HistorialProductesComponent}
+  {path: 'grafiques', component:GrafiquesComponent},
+  {path: 'factures', component:FacturaComponent}
 ];

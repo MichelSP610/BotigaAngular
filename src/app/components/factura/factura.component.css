@@ -1,0 +1,48 @@
+#general {
+  margin: 5vmin auto;
+  border: 1px solid black;
+  width: 80%;
+  box-shadow: inset 0 0 2vh 1vh #000;
+  background-color: #3eb6e8;
+  color:white;
+  font-family: "Microsoft YaHei UI Light";
+  font-weight: normal;
+}
+.factura {
+  width: 80%;
+  margin: 3vmin auto;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #35a0cb;
+}
+
+.facturaData {
+  margin: 3vmin auto;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+
+}
+
+.producteData {
+  margin: 3vmin auto;
+}
+
+.preuFinal {
+  margin: 3vmin auto;
+  text-align: right;
+}
+
+table, tr, th, td{
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 1vmin;
+  background-color: #3bb1e1;
+}
+
+.tableNum {
+  text-align: right;
+}
+

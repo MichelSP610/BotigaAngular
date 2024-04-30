@@ -17,7 +17,7 @@
       <img class="article_image" src="{{product.image}}">
       <h2>{{product.name}}</h2>
       <p>{{product.description}}</p>
-      <h3>{{ product.price | currency:'EUR' }}</h3>
+      <h3>{{ product.price - ((product.price * product.oferta) / 100) | currency:'EUR' }}</h3>
       <div id="offert" *ngIf="product.oferta > 0">
         <h4><p id="discount-label">Descompte:</p> {{product.oferta}}%</h4>
       </div>
