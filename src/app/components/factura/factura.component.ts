@@ -30,7 +30,7 @@ export class FacturaComponent {
       if (producte.detall_oferta == null || producte.detall_oferta == 0) {
         preuFinal += producte.detall_preu * producte.detall_quantitat;
       } else {
-        preuFinal += (producte.detall_preu * (100 / producte.detall_oferta)) * producte.detall_quantitat;
+        preuFinal += ((producte.detall_preu - (producte.detall_preu * producte.detall_oferta) / 100)) * producte.detall_quantitat;
       }
     })
     return preuFinal;

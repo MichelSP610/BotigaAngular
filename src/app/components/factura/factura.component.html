@@ -21,7 +21,7 @@
           <td class="tableNum" *ngIf="producte.detall_oferta != null">{{producte.detall_oferta}}%</td>
           <td class="tableNum" *ngIf="producte.detall_oferta == null">0%</td>
           <td class="tableNum" *ngIf="producte.detall_oferta != null && producte.detall_oferta != 0">
-            {{((producte.detall_preu * producte.detall_oferta) / 100) * producte.detall_quantitat}}
+            {{((producte.detall_preu - (producte.detall_preu * producte.detall_oferta) / 100)) * producte.detall_quantitat}}
           </td>
           <td class="tableNum" *ngIf="producte.detall_oferta == null || producte.detall_oferta == 0">
             {{producte.detall_preu * producte.detall_quantitat}}
