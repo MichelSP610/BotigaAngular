@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-factura',
@@ -12,7 +13,10 @@ import { Component } from '@angular/core';
 export class FacturaComponent {
   factures: any
 
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient, private router: Router){
+    if (sessionStorage.getItem('username') !== 'admin') {
+      this.router.navigate([''])
+    }
     this.getFactures()
   }
 

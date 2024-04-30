@@ -31,7 +31,7 @@ export const routes: Routes = [
   {path: 'afegirProductes', component:AfegirProducteComponent},
   {path: 'grafiques', component:GrafiquesComponent},
   {path: 'administrador', component:AdministradorComponent},
-  {path: 'historialProductes', component:HistorialProductesComponent}
+  {path: 'historialProductes', component:HistorialProductesComponent},
   {path: 'grafiques', component:GrafiquesComponent},
   {path: 'factures', component:FacturaComponent}
 ];
