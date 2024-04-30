@@ -2,7 +2,7 @@
   <div *ngFor="let factura of factures" class="factura">
     <div class="facturaData">
       <p>Factura ID: {{factura.factura_id}}</p>
-      <p>Factura Data: {{factura.factura_data}}</p>
+      <p>Factura Data: {{factura.factura_data.substring(0,10)}}</p>
       <p>Client: {{factura.client}}</p>
     </div>
     <div class="producteData">
