@@ -12,8 +12,8 @@ import {CambiarDadesComponent} from "./components/cambiar-dades/cambiar-dades.co
 import {EnviarEmailComponent} from "./components/enviar-email/enviar-email.component";
 import {AfegirProducteComponent} from "./components/afegir-producte/afegir-producte.component";
 import {GrafiquesComponent} from "./components/grafiques/grafiques.component";
-import {AdministradorComponent} from "./components/administrador/administrador.component";
 import {HistorialProductesComponent} from "./components/historialProductes/historialProductes.component";
+import {AdministradorComponent} from "./components/administrador/administrador.component";
 
 export const routes: Routes = [
   {path: '', component:IniciComponent},
