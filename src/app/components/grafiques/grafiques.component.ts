@@ -142,7 +142,7 @@ export class GrafiquesComponent {
       return data;
     })
     return series;
-    
+
   }
 
   async getSeriesForChartOferta() {
@@ -151,6 +151,6 @@ export class GrafiquesComponent {
       return data;
     })
     return series;
-    
+
   }
 }

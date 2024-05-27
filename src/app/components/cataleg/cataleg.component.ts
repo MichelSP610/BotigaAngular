@@ -25,6 +25,7 @@ export class CatalegComponent {
   }
 
   getProducts() {
+    // this.http.get<any[]>('http://172.16.9.1:3080/getProducts').subscribe((data) => {
     this.http.get<any[]>('http://localhost:3080/getProducts').subscribe((data) => {
       this.Products = data.map(prod => {
         return {

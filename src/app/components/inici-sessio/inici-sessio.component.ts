@@ -28,8 +28,8 @@ export class IniciSessioComponent {
 
   async onSubmit(formularioData: any) {
 
-    this.http.post<any>('http://172.16.9.1:3080/guardar-archivo', formularioData)
-    //this.http.post<any>('http://localhost:3080/guardar-archivo', formularioData)
+    // this.http.post<any>('http://172.16.9.1:3080/guardar-archivo', formularioData)
+    this.http.post<any>('http://localhost:3080/guardar-archivo', formularioData)
       .subscribe(
         response => {
           console.log('Respuesta del servidor:', response);

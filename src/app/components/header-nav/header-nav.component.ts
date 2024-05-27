@@ -19,6 +19,16 @@ export class HeaderNavComponent {
   constructor(private sessioService: SessioService, private router: Router, private http: HttpClient) {
     this.logoImg = this.sessioService.getImageLink('LOGO.png')
     this.usuariImg = this.sessioService.getImageLink('usuariPerfil.png')
+
+    //@ts-ignore
+    window.ethereum.on("accountsChanged", (accounts) => {
+      // @ts-ignore
+      console.log(accounts)
+      if (accounts.length == 0) {
+        console.log("Disconnected")
+        this.sessioService.logOut();
+      }
+    })
   }
 
   ngOnInit() {
@@ -43,9 +53,6 @@ export class HeaderNavComponent {
 
   }
   logOut() {
-    this.sessioService.sendLog(sessionStorage.getItem('username'), "Ha tancat la sessio")
-    sessionStorage.setItem('username', '')
-    sessionStorage.setItem('password', '')
-    this.router.navigate([''])
+    this.sessioService.logOut();
   }
 }

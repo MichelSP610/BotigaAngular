@@ -21,6 +21,8 @@ export class FacturaComponent {
   }
 
   async getFactures() {
+    // this.http.get('http://172.16.9.1:3080/getFactures').subscribe((data) => {
+
     this.http.get('http://localhost:3080/getFactures').subscribe((data) => {
       //@ts-ignore
       this.factures = data;

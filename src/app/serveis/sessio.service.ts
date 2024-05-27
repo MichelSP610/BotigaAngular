@@ -3,6 +3,7 @@ import {HttpClient, HttpClientModule, HttpParams} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
 import {firstValueFrom} from "rxjs";
 import {CistellaService} from "./cistella.service";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ import {CistellaService} from "./cistella.service";
 
 export class SessioService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   async logIn(user: any, password:any) {
@@ -25,9 +26,18 @@ export class SessioService {
     console.log(req.username, req.password)
     // let check = await firstValueFrom(this.http.get<boolean>('http://172.16.9.1:3080/logIn', {params: req}))
     let check = await firstValueFrom(this.http.get<boolean>('http://localhost:3080/logIn', {params: req}))
-    console.log(check)
+
+    try {
+      // @ts-ignore
+      await window.ethereum.request({ method: "eth_requestAccounts"}).then((response) => {
+        console.log(response)
+      })
+    } catch (error) {
+      check = false;
+    }
 
     let req2 = new HttpParams().set('username', user)
+
     // if (check && await firstValueFrom(this.http.get<boolean>('http://172.16.9.1:3080/checkValidated', {params: req2}))) {
     if (check && await firstValueFrom(this.http.get<boolean>('http://localhost:3080/checkValidated', {params: req2}))) {
       // this.http.get<any>('http://172.16.9.1:3080/getClientByName', {params: req}).subscribe( (client) => {
@@ -35,11 +45,18 @@ export class SessioService {
         sessionStorage.setItem('username', client.username)
         sessionStorage.setItem('password', client.password)
         this.sendLog(client.username, "Ha iniciat sessió")
-
       })
     }
+
     else {check = false}
     return check;
+  }
+
+  async logOut() {
+    sessionStorage.setItem('username', '')
+    sessionStorage.setItem('password', '')
+    this.sendLog(sessionStorage.getItem('username'), "Ha tancat la sessio")
+    this.router.navigate([''])
   }
 
   addUser(user:any, password:any, name:any, lastName:any, email:any) {
@@ -91,11 +108,12 @@ export class SessioService {
   }
 
   enviarCompra(cart: any) {
-    // this.http.post('http://172.16.9.1:3080/guardarFactura', cart).subscribe()
+    // this.http.post('http://172.16.9.1:3080/guardarFactura', {client: sessionStorage.getItem('username'), cart: cart}).subscribe()
     this.http.post('http://localhost:3080/guardarFactura', {client: sessionStorage.getItem('username'), cart: cart}).subscribe()
   }
 
   addProduct(productoData: any) {
+    // this.http.post('http://172.16.9.1:3080/agregarProducto', productoData).subscribe(
     this.http.post('http://localhost:3080/agregarProducto', productoData).subscribe(
       response => {
         console.log('Producto agregado correctamente:', response);
