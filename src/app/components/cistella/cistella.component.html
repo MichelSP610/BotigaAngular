@@ -13,7 +13,20 @@
         </div>
       </tr>
     </table>
-    <h2>Total: {{ cartService.getTotal() | currency:'EUR' }}</h2>
+    <form>
+      <label for="crypto-select">Selecciona una criptomoneda:</label>
+      <select id="crypto-select" [(ngModel)]="selectedCrypto" name="selectedCrypto" (change)="onCryptoChange()">
+        <option value="eur">Euros (EUR)</option>
+        <option value="bitcoin">Bitcoin (BTC)</option>
+        <option value="ethereum">Ethereum (ETH)</option>
+        <option value="binancecoin">Binance Coin (BNB)</option>
+      </select>
+    </form>
+    <h2>
+      Total:
+      <span *ngIf="selectedCrypto === 'eur'">{{ getConvertedTotal() | currency:'EUR':'symbol':'1.2-2' }}</span>
+      <span *ngIf="selectedCrypto !== 'eur'">{{ getConvertedTotal() | number:'1.8-8' }} {{ selectedCrypto | uppercase }}</span>
+    </h2>
     <button type="submit" id="cistella_submit" class="btn btn-success" (click)="cartService.guardarCompra()">COMPRAR</button>
   </div>
 </article>
