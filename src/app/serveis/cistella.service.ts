@@ -69,8 +69,8 @@ export class CistellaService {
     }, 0)
   }
 
-  guardarCompra(moneda: any, total: any) {
-    this.sessioService.enviarCompra(this.items, moneda, total);
+  guardarCompra(moneda: any, total: any, compte: any) {
+    this.sessioService.enviarCompra(this.items, moneda, total, compte);
     this.deleteCart();
   }
 
