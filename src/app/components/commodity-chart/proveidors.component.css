@@ -1,57 +1,29 @@
-#general {
+.general {
   margin: 5vmin auto;
   border: 1px solid black;
   width: 80%;
   box-shadow: inset 0 0 2vh 1vh #000;
   background-color: #3eb6e8;
-  color:white;
+  color: white;
   font-family: "Microsoft YaHei UI Light";
   font-weight: normal;
 }
 
-.invoice {
-  width: 80%;
-  margin: 3vmin auto;
-  border: 2px solid black;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  background-color: #35a0cb;
+.contingut {
+  padding: 2vmin;
 }
 
-.invoiceData {
-  margin: 3vmin auto;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
+h2 {
+  fontstyle: bold;
+  margin-bottom: 1.5vmin;
 }
-
-.productData {
-  margin: 3vmin auto;
-}
-
-.finalPrice {
-  margin: 3vmin auto;
-  text-align: right;
-}
-
-table, tr, th, td{
-  border: 1px solid black;
-  border-collapse: collapse;
-  padding: 1vmin;
-  background-color: #3bb1e1;
-}
-
-.tableNum {
-  text-align: right;
-}
-
 
 .cookie-item {
   margin-bottom: 3vmin;
   padding: 2vmin;
-  border: 1px solid #ccc;
-  background-color: #fff;
+  border: 1px solid #000;
+  color: black;
+  background-color: #35a0cb;
   border-radius: 5px;
 }
 
