@@ -15,6 +15,7 @@ import {GrafiquesComponent} from "./components/grafiques/grafiques.component";
 import {AdministradorComponent} from "./components/administrador/administrador.component";
 import { FacturaComponent } from './components/factura/factura.component';
 import {ProveidorsComponent} from "./components/commodity-chart/proveidors.component";
+import {InformacioTransaccionsComponent} from "./components/informacio-transaccions/informacio-transaccions.component";
 
 export const routes: Routes = [
   {path: '', component:IniciComponent},
@@ -33,5 +34,6 @@ export const routes: Routes = [
   {path: 'administrador', component:AdministradorComponent},
   {path: 'grafiques', component:GrafiquesComponent},
   {path: 'factures', component:FacturaComponent},
-  {path: 'proveidors', component:ProveidorsComponent}
+  {path: 'proveidors', component:ProveidorsComponent},
+  {path: 'transaccions', component:InformacioTransaccionsComponent}
 ];
