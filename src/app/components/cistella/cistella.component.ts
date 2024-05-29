@@ -49,7 +49,7 @@ export class CistellaComponent {
 
   guardarCompra() {
     this.comprar(() => {
-      this.cartService.guardarCompra();
+      this.cartService.guardarCompra( this.selectedCrypto, this.getConvertedTotal());
     });
   }
 

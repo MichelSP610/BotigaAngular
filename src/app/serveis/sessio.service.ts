@@ -107,9 +107,9 @@ export class SessioService {
     window.location.reload();
   }
 
-  enviarCompra(cart: any) {
+  enviarCompra(cart: any, moneda: any, total: any) {
     // this.http.post('http://172.16.9.1:3080/guardarFactura', {client: sessionStorage.getItem('username'), cart: cart}).subscribe()
-    this.http.post('http://localhost:3080/guardarFactura', {client: sessionStorage.getItem('username'), cart: cart}).subscribe()
+    this.http.post('http://localhost:3080/guardarFactura', {client: sessionStorage.getItem('username'), cart: cart, moneda: moneda, total: total}).subscribe()
   }
 
   addProduct(productoData: any) {
