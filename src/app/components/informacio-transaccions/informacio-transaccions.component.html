@@ -1,0 +1,22 @@
+<div class="general">
+  <div class="tableDiv">
+    <table>
+      <tr>
+        <th>Hash</th>
+        <th>Nº Blocs</th>
+        <th>Adreça</th>
+        <th>Data</th>
+        <th>Valor</th>
+        <th>Moneda</th>
+      </tr>
+      <tr *ngFor="let result of results; let i=index">
+        <td>{{result.hash}}</td>
+        <td>{{result.blockNumber}}</td>
+        <td>{{result.from}}</td>
+        <td>{{toDate(result.timeStamp)}}</td>
+        <td>{{result.value / 1000000000000000000}}</td>
+        <td>{{getMoneda(i)}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
