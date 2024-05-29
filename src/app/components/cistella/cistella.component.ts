@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 import {CryptoService} from "../../serveis/crypto.service";
 import {FormsModule} from "@angular/forms";
+import {Web3} from "web3";
 
 
 @Component({
@@ -28,8 +29,10 @@ export class CistellaComponent {
   cartService = inject(CistellaService);
   selectedCrypto: string = 'eur';
   conversionRate: number = 1;
+  web3: Web3;
 
   constructor(private router: Router, private crypto: CryptoService) {
+    this.web3 = new Web3((window as any).ethereum);
     let checkUser = sessionStorage.getItem('username');
     if (!checkUser || checkUser === '') {
       this.router.navigate(['/login']);
@@ -45,9 +48,9 @@ export class CistellaComponent {
   }
 
   guardarCompra() {
-    this.comprar().then(() => {
-      this.cartService.guardarCompra()
-    })
+    this.comprar(() => {
+      this.cartService.guardarCompra();
+    });
   }
 
   getCryptoPrice(cryptoId: string): void {
@@ -78,28 +81,27 @@ export class CistellaComponent {
     return this.selectedCrypto === 'eur' ? totalInEur : totalInEur / this.conversionRate;
   }
 
-  async comprar() {
+  async comprar(callback: () => void) {
     //@ts-ignore
     if (typeof window.ethereum !== 'undefined') {
       const total = this.getConvertedTotal();
-      const valueInWei = this.toWei(total, this.getDecimalPlaces(this.selectedCrypto));
-      const params = {
-        from: await this.getCurrentAccount(),
-        to: '0x349A39B4660Fb4b4a41a2592390F9E3BCddb72c3', // Replace with your recipient address
-        gas: '0x76c0',
-        gasPrice: '0x9184e72a000',
-        value: valueInWei
-      };
+      //@ts-ignore
+      const valueInWei = this.web3.utils.toWei(total.toString(), 'ether');
+      const paymentAddress = '0x349A39B4660Fb4b4a41a2592390F9E3BCddb72c3'; // Replace with your recipient address
 
       try {
         //@ts-ignore
-        const result = await window.ethereum.request({
-          method: 'eth_sendTransaction',
-          params: [params],
+        const accounts = await this.web3.eth.requestAccounts();
+        //@ts-ignore
+        const transactionId = await this.web3.eth.sendTransaction({
+          from: accounts[0],
+          to: paymentAddress,
+          value: valueInWei
         });
-        console.log('Transaction successful with hash:', result);
-      } catch (error) {
-        console.error('Error during transaction:', error);
+        console.log('Transaction successful with hash:', transactionId);
+        callback();
+      } catch (err) {
+        console.error('Payment failed', err);
       }
     } else {
       console.error('MetaMask is not installed!');
