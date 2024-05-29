@@ -115,8 +115,9 @@ export class CistellaComponent {
   }
 
   private async getCurrentAccount(): Promise<string> {
-    const accounts = await this.web3.eth.requestAccounts();
-    return accounts[0]
+    //@ts-ignore
+    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    return accounts[0];
   }
 
   private getDecimalPlaces(crypto: string): number {

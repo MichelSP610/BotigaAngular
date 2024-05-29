@@ -13,7 +13,7 @@ import {EnviarEmailComponent} from "./components/enviar-email/enviar-email.compo
 import {AfegirProducteComponent} from "./components/afegir-producte/afegir-producte.component";
 import {GrafiquesComponent} from "./components/grafiques/grafiques.component";
 import {AdministradorComponent} from "./components/administrador/administrador.component";
-import { FacturaComponent } from './components/factura/factura.component';
+import {FacturaComponent} from './components/factura/factura.component';
 import {ProveidorsComponent} from "./components/commodity-chart/proveidors.component";
 import {InformacioTransaccionsComponent} from "./components/informacio-transaccions/informacio-transaccions.component";
 
