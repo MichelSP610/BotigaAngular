@@ -1,0 +1,8 @@
+<h2>Lista de Galletas</h2>
+
+<div *ngFor="let cookie of cookies" class="cookie-item">
+  <h3 class="cookie-item-heading">{{ cookie.product_name }}</h3>
+  <p class="cookie-item-text"><strong>Marca:</strong> {{ cookie.brands }}</p>
+  <p class="cookie-item-text"><strong>País de Origen:</strong> {{ cookie.countries }}</p>
+  <p class="cookie-item-text"><strong>Código de Barras:</strong> {{ cookie.code }}</p>
+</div>
