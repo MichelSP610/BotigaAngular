@@ -44,6 +44,12 @@ export class CistellaComponent {
     this.getCryptoPrice(this.selectedCrypto);
   }
 
+  guardarCompra() {
+    this.comprar().then(() => {
+      this.cartService.guardarCompra()
+    })
+  }
+
   getCryptoPrice(cryptoId: string): void {
     if (cryptoId === 'eur') {
       this.conversionRate = 1;
@@ -72,33 +78,17 @@ export class CistellaComponent {
     return this.selectedCrypto === 'eur' ? totalInEur : totalInEur / this.conversionRate;
   }
 
-  deleteFromCart(item: any) {
-    this.cartService.deleteFromCart(item);
-    if (this.cartService.getItems().length === 0) {
-      this.router.navigate(['/cataleg']);
-    }
-  }
-
-  trackByProductId(product: any): number {
-    return product.id;
-  }
-
-  guardarCompra() {
-    this.comprar().then(r => {
-      this.cartService.guardarCompra()
-    });
-  }
-
   async comprar() {
     //@ts-ignore
     if (typeof window.ethereum !== 'undefined') {
       const total = this.getConvertedTotal();
+      const valueInWei = this.toWei(total, this.getDecimalPlaces(this.selectedCrypto));
       const params = {
         from: await this.getCurrentAccount(),
-        to: '0x349A39B4660Fb4b4a41a2592390F9E3BCddb72c3',
+        to: '0x349A39B4660Fb4b4a41a2592390F9E3BCddb72c3', // Replace with your recipient address
         gas: '0x76c0',
         gasPrice: '0x9184e72a000',
-        value: this.selectedCrypto === 'eur' ? this.toWei(total, 18) : this.toWei(total, this.getDecimalPlaces(this.selectedCrypto))
+        value: valueInWei
       };
 
       try {
@@ -116,14 +106,14 @@ export class CistellaComponent {
     }
   }
 
+  private toWei(amount: number, decimals: number): string {
+    return (amount * Math.pow(10, decimals)).toFixed(0);
+  }
+
   private async getCurrentAccount(): Promise<string> {
     //@ts-ignore
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
     return accounts[0];
-  }
-
-  private toWei(amount: number, decimals: number): string {
-    return (amount * Math.pow(10, decimals)).toString();
   }
 
   private getDecimalPlaces(crypto: string): number {
@@ -137,5 +127,16 @@ export class CistellaComponent {
       default:
         return 18;
     }
+  }
+
+  deleteFromCart(item: any) {
+    this.cartService.deleteFromCart(item);
+    if (this.cartService.getItems().length === 0) {
+      this.router.navigate(['/cataleg']);
+    }
+  }
+
+  trackByProductId(product: any): number {
+    return product.id;
   }
 }
